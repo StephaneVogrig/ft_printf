@@ -6,18 +6,74 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:56:48 by svogrig           #+#    #+#             */
-/*   Updated: 2023/11/18 19:21:39 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/17 20:10:41 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <limits.h>
+#include <unistd.h>
+/*
+void	stud_d(void)
+{
+	long long	n;
+
+	n = LONG_MAX;
+	//n = INT_MAX;
+	printf("Etude du convertisseur d\n");
+	
+	printf("printf(%%d, n)   = \""); printf ("\" : %i\n", printf("%d", n));
+	printf("printf(%%d, n)   = \""); printf ("\" : %i\n", printf("%li", n));
+	printf("sizeof char: %i\n",sizeof(char));
+	printf("sizeof int: %i\n",sizeof(int));
+	printf("sizeof long: %i\n",sizeof(long));
+	printf("sizeof long long: %i\n",sizeof(long long));
+	printf("sizeof double: %i\n",sizeof(double));
+	printf("sizeof float: %i\n",sizeof(float));
+	printf("sizeof char*: %i\n",sizeof(char*));
+	
+}*/
 
 int	main(void)
 {
 	int	n = 42;
+	int size_print;
 
-	printf("int 42 = %0i\n", n);
 
+	close(1);
+	size_print = printf("bonjour");
+	size_print = write(1, "erreur par std erreur", 15);
+	/*
+	stud_d();
+
+	printf("n = 42 --------------------------------------------\n");
+	printf("printf(%%i, n)   = \""); printf ("\" : %i\n", printf("%i", n));
+	printf("printf(%%-i, n)  = \""); printf ("\" : %i\n", printf("%-i", n));
+	printf("printf(%%0i, n)  = \""); printf ("\" : %i\n", printf("%0i", n));
+	printf("printf(%%.i, n) = "); printf("%.i| ", n);printf("\n");
+	printf("printf(%%#i, n) = "); printf("%#i| ", n);printf("\n");
+	printf("printf(%% i, n) = "); printf("% i| ", n);printf("\n");
+	printf("printf(%%+i, n) = "); printf("%+i| ", n);printf("\n");
+	printf("\n");
+	printf("printf(%%10i, n)  = \""); printf ("\" : %i\n", printf("%10i", n));
+	printf("printf(%%-10i, n) = \""); printf ("\" : %i\n", printf("%-10i", n));
+	printf("printf(%%010i, n) = \""); printf ("\" : %i\n", printf("%010i", n));
+	printf("printf(%%10.i, n) = "); printf("%10.i| ", n);printf("\n");
+	printf("printf(%%#10i, n) = "); printf("%#10i| ", n);printf("\n");
+	printf("printf(%% 10i, n) = "); printf("% 10i| ", n);printf("\n");
+	printf("printf(%%+10i, n) = "); printf("%+10i| ", n);printf("\n");
+	printf("\n");
+	printf("printf(%%10-i, n) = "); printf("%10-i| ", n);printf("\n");
+	printf("printf(%%.10i, n) = "); printf("%.10i| ", n);printf("\n");
+	printf("printf(%%10#i, n) = "); printf("%10#i| ", n);printf("\n");
+	printf("printf(%%10 i, n) = "); printf("%10 i| ", n);printf("\n");
+	printf("printf(%%10+i, n) = "); printf("%10+i| ", n);printf("\n");
+	printf("\n");
+	
+	printf("printf(%%i)   = \""); printf ("\" : %i\n", printf("%i"));
+	int m = 42;
+	printf("printf(%%i)   = \""); printf ("\" : %i\n", printf("%i", n, m));*/
+/*
 	printf("int 42 = %10i\n", n);
 	printf("int 42 = %010i\n", n);
 	printf("int 42 = % 10i\n", n);
@@ -53,7 +109,7 @@ int	main(void)
 	n = -42;
 
 	printf("int -42 = %+- #- -0--+ 0000+#+#000 0000---5.4 ii----     000000   .12---++++++++++--++++++++++5i          i\n", n);
-	/*printf("int -42 = %+- #- -0--+ 0000+#+#000 0000---5.4ii----     000000   .12---++++++++++--++++++++++5i          i\n", n);
+	printf("int -42 = %+- #- -0--+ 0000+#+#000 0000---5.4ii----     000000   .12---++++++++++--++++++++++5i          i\n", n);
 	printf("int -42 = %0000000000000   +       ###############10i", n);
 
 	printf("\n");
@@ -67,6 +123,4 @@ int	main(void)
 	printf("'F' = %c\n", n);
 	printf("'G' = %#######000000+++++++10c\n", n + 1);
 	*/
-/*
-*/
 }

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/18 20:06:27 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/19 04:23:03 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>
+
+typeded struct s_specification {
+	char	flag_#;
+	char	flag_0;
+	char	flag_minus;
+	char	flag_space;
+	char	flag_plus;
+	int		width;
+	char	dot;
+	int		precision;
+	char	conversion;
+}	t_specification;
 
 int	ft_printf(const char *format, ...);
 

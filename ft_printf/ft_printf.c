@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:00:52 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/19 01:17:09 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/19 04:20:21 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,32 @@
 	'%' prints '%'
 
 		%[flags][width][.precision][length]specifier
-
+		
+	flags : '#' '0' '-' ' ' '+'
+	length : 'hh' 'h' 'l' 'll' 'q' 'L' 'j' 'z' 'Z' 't'
 	characters used :diuoxXfFeEgGaAcspn%-+ #0*.hljztL
 */
 
+ssize_t	print_spec(const char *format, va_list args)
+{
+	int				i;
+	t_specification	spec;
+
+	i = 0;
+	specification_init(&spec);
+
+	while (format[i])
+	{
+		while (format[i] && memchr("#0- +", format[i], 5)) // check_flags
+		while (format[i] >= '0' && format[i] < = '9') // check_width
+			specifier.width = specifier.width * 10 + format[i++] - '0';
+		check_precision
+		check_len_mod
+		check_conversion
+		i++;
+	}
+
+}
 
 ssize_t	print_arg(const char *format, va_list args)
 {
@@ -55,7 +77,8 @@ ssize_t	print_arg(const char *format, va_list args)
 		return (print_uiX(va_arg(args, unsigned int)));
 	if (*format == '\0')
 		return (write(1, format - 1, 1));
-	return (write(1, format - 1, 2));
+	return (print_spec(format, args));
+//	return (write(1, format - 1, 2));
 }
 
 int	ft_printf(const char *format, ...)

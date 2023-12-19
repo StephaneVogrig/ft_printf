@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:03:12 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/19 01:22:58 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/19 04:04:19 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,15 +231,15 @@ void	test_X(void)
 	printf(" | %i\n", result);
 	printf("--------------------------\n");
 }
-void	test_purcent(void)
+void	test_purcent_logic(void)
 {
 	int	result;
-
+/*
 	printf("\n");
-	printf("test %\n--------------------------\n");
-	result = ft_printf("%%", 0);
+	printf("test %%\n--------------------------\n");
+	result = ft_printf("%%");
 	printf(" | %i\n", result);
-	result = printf("%%", 0);
+	result = printf("%%");
 	printf(" | %i\n", result);
 	printf("\n");
 
@@ -267,6 +267,23 @@ void	test_purcent(void)
 	printf(" | %i\n", result);
 	printf("\n");
 
+	result = ft_printf("%s%% le monde en%%%kore%c", "Bonjour", '*');
+	printf(" | %i\n", result);
+	result = printf("%s%% le monde en%%%kore%c", "Bonjour", '*');
+	printf(" | %i\n", result);
+	printf("\n");
+
+	result = ft_printf("%s%% le monde en%%%kore et %", "Bonjour");
+	printf(" | %i\n", result);
+	result = printf("%s%% le monde en%%%kore et %", "Bonjour");
+	printf(" | %i\n", result);
+*/	printf("\n");
+}
+
+void	test_purcent_crazy()
+{
+	int	result;
+
 	result = ft_printf("\"a la fin %%\" %");
 	printf(" | %i\n", result);
 	result = printf("\"a la fin %%\" %");
@@ -279,23 +296,14 @@ void	test_purcent(void)
 	printf(" | %i\n", result);
 	printf("\n");
 
-	result = ft_printf("ak%", "Bonjour");
+	result = ft_printf("ft_printf : %j");
 	printf(" | %i\n", result);
-	result = printf("%s%j", "Bonjour");
+	result = printf("   printf : %j");
 	printf(" | %i\n", result);
-	printf("\n");
-
-	result = ft_printf("%s%% le monde en%%%kore%c", "Bonjour", '*');
-	printf(" | %i\n", result);
-	result = printf("%s%% le monde en%%%kore%c", "Bonjour", '*');
+	result = printf("   printf : %k");
 	printf(" | %i\n", result);
 	printf("\n");
 
-	result = ft_printf("%s%% le monde en%%%kore et %", "Bonjour");
-	printf(" | %i\n", result);
-	result = printf("%s%% le monde en%%%kore et %", "Bonjour");
-	printf(" | %i\n", result);
-	printf("\n");
 	printf("--------------------------\n");
 	printf("diuoxXfFeEgGaAcspn%-+ #0*.hljztL");
 }
@@ -330,7 +338,8 @@ int	main(void)
 	// test_unsigned_int();
 	// test_x();
 	// test_X();
-	test_purcent();
+	// test_purcent_logic();
+	test_purcent_crazy();
 
 
 	// test_long_int();

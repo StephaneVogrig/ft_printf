@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:33:14 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 00:57:39 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 10:54:40 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ssize_t	buffer_print(t_buffer buffer)
 /*	Copy n characters c in buffer and update buffer.offset.                   */
 /*	If buffer is full, it is flush by write.                                  */
 void	buffer_add_char(t_buffer *buffer, char c, int n)
-{	
+{
 	while (n--)
 	{
 		buffer->data[buffer->offset++] = c;
@@ -45,5 +45,4 @@ void	buffer_add_str(t_buffer *buffer, char *str, size_t n)
 			buffer->offset = 0;
 		}
 	}
-
 }

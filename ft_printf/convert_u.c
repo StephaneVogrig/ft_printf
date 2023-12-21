@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 22:51:17 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 07:46:13 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 08:43:16 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,5 @@ void	convert_u(va_list args, t_spec *spec, t_buffer *buffer)
 		len_nbr = ull_to_str_hexaupper(str, ull);
 	else
 		len_nbr = ull_to_str_dec(str, ull);
-	
 	format_ull(spec, buffer, str, len_nbr);
 }
-

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 22:44:21 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 04:08:02 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 08:42:39 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ void	convert_s(char *str, t_spec *spec, t_buffer *buffer)
 	buffer_add_str(buffer, str, len);
 	if (spec->width > -1 && len < (size_t)spec->width && spec->flag_minus)
 		buffer_add_char(buffer, ' ', spec->width - len);
-
 }

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 22:50:55 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 06:43:29 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 08:42:26 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	convert_i(va_list args, t_spec *spec, t_buffer *buffer)
 	long long	ll;
 	char		str[LEN_MAXLONGLONG];
 	int			len_nbr;
-	
+
 	str[0] = '+';
 	ll = ll_from_arg(args, spec);
 	if (ll == LLONG_MIN)

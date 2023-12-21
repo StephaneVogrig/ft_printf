@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ull_to_str.c                                       :+:      :+:    :+:   */
+/*   nbr_to_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 23:19:33 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 08:16:33 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 10:56:08 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include "ft_printf.h"
 
 int	ull_to_str_dec(char *str, unsigned long long n)
 {
@@ -23,11 +23,10 @@ int	ull_to_str_dec(char *str, unsigned long long n)
 		n = n / 10;
 	}
 	str[i] = n + '0';
-
 	return (LEN_MAXLONGLONG - i);
 }
 
-int ull_to_str_hexaupper(char *str, unsigned long long n)
+int	ull_to_str_hexaupper(char *str, unsigned long long n)
 {
 	int		i;
 
@@ -38,7 +37,6 @@ int ull_to_str_hexaupper(char *str, unsigned long long n)
 		n >>= 4;
 	}
 	str[i] = "0123456789ABCDEF"[n];
-
 	return (LEN_MAXLONGLONG - i);
 }
 
@@ -53,6 +51,5 @@ int	ull_to_str_hexalower(char *str, unsigned long long n)
 		n >>= 4;
 	}
 	str[i] = "0123456789abcdef"[n];
-
 	return (LEN_MAXLONGLONG - i);
 }

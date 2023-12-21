@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:22:30 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 05:05:05 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 11:01:02 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	convert_arg(va_list args, t_spec *spec, t_buffer *buffer)
 	else if (spec->conversion == '%')
 		buffer_add_char(buffer, '%', 1);
 	else if (spec->conversion == 'p')
-		convert_p(va_arg(args, void*), spec, buffer);
+		convert_p(va_arg(args, void *), spec, buffer);
 	else if (spec->conversion == 'd' || spec->conversion == 'i')
 		convert_i(args, spec, buffer);
 	else if (spec->conversion == 'u')
@@ -32,15 +32,15 @@ void	convert_arg(va_list args, t_spec *spec, t_buffer *buffer)
 
 const char	*process_arg(const char *format, t_buffer *buffer, va_list args)
 {
-	t_spec spec;
+	t_spec	spec;
 
 	specification_init(&spec);
 	format = set_flags(format, &spec);
 	format = set_widthfield(format, &spec);
-	if  (!format)
+	if (!format)
 		return (NULL);
 	format = set_precision(format, &spec);
-	if  (!format)
+	if (!format)
 		return (NULL);
 	format = set_length(format, &spec);
 	format = set_conversion(format, &spec);
@@ -54,8 +54,8 @@ const char	*process_before_arg(const char *format, t_buffer *buffer)
 	while (*format)
 	{
 		if (*format == '%')
-			break;
-		buffer->data[buffer->offset++] =  *format++;
+			break ;
+		buffer->data[buffer->offset++] = *format++;
 		if (buffer->offset == BUFFER_SIZE)
 		{
 			buffer->writed += write(1, buffer->data, BUFFER_SIZE);

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 11:14:40 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 12:52:34 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ typedef struct s_spec {
 
 int					ft_printf(const char *format, ...);
 
-/* process -------------------------------------------------------------------*/
-const char			*process_before_arg(const char *format, t_buffer *buffer);
-const char			*process_arg(const char *format, t_buffer *buffer, \
+/* parsing -------------------------------------------------------------------*/
+const char			*parse_before_arg(const char *format, t_buffer *buffer);
+const char			*parse_arg(const char *format, t_buffer *buffer, \
 					va_list args);
+void				specification_init(t_spec *specification);
 
 /* specifications ------------------------------------------------------------*/
-void				specification_init(t_spec *specification);
 
 /* specifications set --------------------------------------------------------*/
 const char			*set_flags(const char *format, t_spec *spec);
@@ -55,19 +55,21 @@ const char			*set_precision(const char *format, t_spec *spec);
 const char			*set_length(const char *format, t_spec *spec);
 const char			*set_conversion(const char *format, t_spec *spec);
 
-/* buffer -----------------------------------------------------------------*/
+/* buffer --------------------------------------------------------------------*/
 void				buffer_add_char(t_buffer *buffer, char c, int n);
 void				buffer_add_str(t_buffer *buffer, char *str, size_t len);
-
-/* character -----------------------------------------------------------------*/
-void				convert_c(char c, t_spec *spec, t_buffer *buffer);
-void				convert_i(va_list args, t_spec *spec, t_buffer *buffer);
-void				convert_p(void *p, t_spec *spec, t_buffer *buffer);
-void				convert_s(char *str, t_spec *spec, t_buffer *buffer);
-void				convert_u(va_list args, t_spec *spec, t_buffer *buffer);
-
-/* buffer --------------------------------------------------------------------*/
 ssize_t				buffer_print(t_buffer buffer);
+
+/* format --------------------------------------------------------------------*/
+void				format_c(char c, t_spec *spec, t_buffer *buffer);
+void				format_i(va_list args, t_spec *spec, t_buffer *buffer);
+void				format_p(void *p, t_spec *spec, t_buffer *buffer);
+void				format_s(char *str, t_spec *spec, t_buffer *buffer);
+void				format_u(va_list args, t_spec *spec, t_buffer *buffer);
+void				format_ull(t_spec *spec, t_buffer *buffer, char *str, \
+					int len_str);
+void				format_ll(t_spec *spec, t_buffer *buffer, char *str, \
+					int len_nbr);
 
 /* utils ---------------------------------------------------------------------*/
 int					ft_isdigit(int c);
@@ -76,16 +78,13 @@ void				*ft_memcpy(void *dest, const void *src, size_t n);
 char				*ft_strchr(const char *s, int c);
 size_t				ft_strlen(const char *s);
 
-unsigned long long	ull_from_arg(va_list args, t_spec *spec);
-long long			ll_from_arg(va_list args, t_spec *spec);
+/* arg to ll ----------------------------------------------------------------*/
+unsigned long long	arg_to_ull(va_list args, t_spec *spec);
+long long			arg_to_ll(va_list args, t_spec *spec);
 
+/* utils ---------------------------------------------------------------------*/
 int					ull_to_str_dec(char *str, unsigned long long n);
 int					ull_to_str_hexalower(char *str, unsigned long long n);
 int					ull_to_str_hexaupper(char *str, unsigned long long n);
-
-void				format_ull(t_spec *spec, t_buffer *buffer, char *str, \
-					int len_str);
-void				format_ll(t_spec *spec, t_buffer *buffer, char *str, \
-					int len_nbr);
 
 #endif

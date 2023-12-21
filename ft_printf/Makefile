@@ -6,7 +6,7 @@
 #    By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2023/12/21 08:35:38 by svogrig          ###   ########.fr        #
+#    Updated: 2023/12/21 12:52:46 by svogrig          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,24 +17,18 @@ NAME = libftprintf.a
 #------------------------------------------------------------------------------#
 
 SRC_DIR		:=	.
-SRCS 		:=	buffer.c \
-				convert_c.c \
-				convert_i.c \
-				convert_p.c \
-				convert_s.c \
-				convert_u.c \
-				format.c \
-				ft_isdigit.c \
-				ft_memchr.c \
-				ft_memcpy.c \
-				ft_printf.c \
-				ft_strchr.c \
-				ft_strlen.c \
-				process.c \
+SRCS 		:=	ft_printf.c \
+				buffer.c \
+				parsing.c \
 				specification_set.c \
-				specification.c \
-				arg_to_nbr.c \
-				nbr_to_str.c
+				arg_to_ll.c \
+				ull_to_str.c \
+				format_i.c \
+				format_c.c \
+				format_p.c \
+				format_s.c \
+				format_ll.c \
+				ft_utils.c
 
 SRCS		:=	$(SRCS:%=$(SRC_DIR)/%)
 

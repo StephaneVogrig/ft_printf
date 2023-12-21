@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:00:52 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 03:27:22 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 11:44:51 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,9 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (format && *format)
 	{
-		format = process_before_arg(format, &buffer);
+		format = parse_before_arg(format, &buffer);
 		if (*format == '%')
-			format = process_arg(format + 1, &buffer, args);
+			format = parse_arg(format + 1, &buffer, args);
 	}
 	va_end(args);
 	writed = buffer_print(buffer);

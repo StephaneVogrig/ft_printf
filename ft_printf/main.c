@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:03:12 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 20:17:21 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/22 00:16:00 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -626,6 +626,11 @@ int	main(void)
 {	
 	// int	result;
 
+
+	{
+	ft_printf("%d\n", ft_printf("%#-5x", 52625));
+	printf("%d\n", printf("%#-5x", 52625));
+}
 	// result = ft_printf("%k%      00%00#10.lk", 0);
 	// printf(" | %i\n", result);
 	// result = printf("%k%      00%00#10.lk", 0);
@@ -634,17 +639,17 @@ int	main(void)
 	// printf(" | %i\n", result);
 	// result = printf("% wef %");
 	// printf(" | %i\n", result);
-	test_char();
-	test_str();
-	test_ptr();
-	test_d();
-	test_int();
-	test_unsigned_int();
-	test_x();
-	test_X();
-	test_purcent_logic();
+	// test_char();
+	// test_str();
+	// test_ptr();
+	// test_d();
+	// test_int();
+	// test_unsigned_int();
+	// test_x();
+	// test_X();
+	// test_purcent_logic();
 	// test_purcent_crazy();
-	test_field_width();
+	// test_field_width();
 	// test_precision();
 	// test_flags();
 

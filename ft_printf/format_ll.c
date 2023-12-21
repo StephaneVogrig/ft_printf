@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:01:37 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 19:19:05 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/22 00:31:17 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	format_ll(t_spec *spec, t_buffer *buffer, char *str, int len_nbr)
 		buffer_add_char(buffer, '0', spec->width - len_occuped);
 	buffer_add_char(buffer, '0', len_precision);
 	buffer_add_str(buffer, str + LEN_MAXLONGLONG - len_nbr, len_nbr);
-	if (spec->width > (len_nbr + len_precision) && spec->flag_minus > 0)
+	if (spec->width > len_occuped && spec->flag_minus)
 		buffer_add_char(buffer, ' ', spec->width - len_occuped);
 }

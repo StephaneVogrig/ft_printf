@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:38:17 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 19:37:55 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/22 00:31:50 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	format_ull(t_spec *spec, t_buffer *buffer, char *str, int len_nbr)
 	if (is_set_hexa_hash(spec))
 		len_ox = 2;
 	len_precision = 0;
-	if (spec->precision == 0 & str[LEN_MAXLONGLONG - 1] == '0')
+	if (spec->precision == 0 && str[LEN_MAXLONGLONG - 1] == '0')
 		len_nbr = 0;
 	if (spec->precision > len_nbr)
 		len_precision = spec->precision - len_nbr;
@@ -42,6 +42,7 @@ void	format_ull(t_spec *spec, t_buffer *buffer, char *str, int len_nbr)
 		buffer_add_char(buffer, '0', spec->width - len_occuped);
 	buffer_add_char(buffer, '0', len_precision);
 	buffer_add_str(buffer, str + LEN_MAXLONGLONG - len_nbr, len_nbr);
-	if (spec->width > (len_nbr + len_precision) && spec->flag_minus > 0)
+	if (spec->width > len_occuped && spec->flag_minus)
 		buffer_add_char(buffer, ' ', spec->width - len_occuped);
+	/*	si spec->width - len_occuped est negatif alors boucle infinie */
 }

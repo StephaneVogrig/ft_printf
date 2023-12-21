@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_c.c                                        :+:      :+:    :+:   */
+/*   format_pc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 17:37:29 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 04:07:40 by svogrig          ###   ########.fr       */
+/*   Created: 2023/12/21 13:52:26 by svogrig           #+#    #+#             */
+/*   Updated: 2023/12/21 19:37:36 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	convert_c(char c, t_spec *spec, t_buffer *buffer)
+int	format_pc(t_buffer	*buffer)
 {
-	if (spec->width > 1 && !spec->flag_minus)
-		buffer_add_char(buffer, ' ', spec->width - 1);
-	buffer_add_char(buffer, c, 1);
-	if (spec->width > 1 && spec->flag_minus)
-		buffer_add_char(buffer, ' ', spec->width - 1);
+	buffer_add_char(buffer, '%', 1);
+	return (1);
 }

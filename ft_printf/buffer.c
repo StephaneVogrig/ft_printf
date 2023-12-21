@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:33:14 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 12:11:56 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 19:38:42 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,36 @@ void	buffer_add_str(t_buffer *buffer, char *str, size_t n)
 			buffer->offset = 0;
 		}
 	}
+}
+
+void	buffer_add_nbr(t_buffer *buffer, unsigned long long ull)
+{
+	char	str[LEN_MAXLONGLONG];
+	int		len_nbr;
+
+	len_nbr = ull_to_str_dec(str, ull);
+	buffer_add_str(buffer, str + LEN_MAXLONGLONG - len_nbr, len_nbr);
+}
+
+int	buffer_add_spec(t_buffer *buffer, t_spec *spec)
+{
+	buffer_add_char(buffer, '%', 1);
+	if (spec->flag_hash)
+		buffer_add_char(buffer, '#', 1);
+	if (spec->flag_plus)
+		buffer_add_char(buffer, '+', 1);
+	if (spec->flag_space && !spec->flag_plus)
+		buffer_add_char(buffer, ' ', 1);
+	if (spec->flag_minus)
+		buffer_add_char(buffer, '-', 1);
+	if (spec->flag_zero && !spec->flag_minus)
+		buffer_add_char(buffer, '0', 1);
+	if (spec->width > -1)
+		buffer_add_nbr(buffer, (unsigned long long)spec->width);
+	if (spec->precision > -1)
+	{
+		buffer_add_char(buffer, '.', 1);
+		buffer_add_nbr(buffer, (unsigned long long)spec->precision);
+	}
+	return (1);
 }

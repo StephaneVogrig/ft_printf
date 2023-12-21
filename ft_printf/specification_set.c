@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 08:45:03 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 19:40:20 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ const char	*set_widthfield(const char *format, t_spec *spec)
 {
 	long long	w;
 
+	if (!ft_isdigit(*format))
+		return (format);
 	w = 0;
 	while (ft_isdigit(*format))
 	{

@@ -6,13 +6,13 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 22:44:21 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 12:18:58 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 13:42:56 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	format_s(char *str, t_spec *spec, t_buffer *buffer)
+int	format_s(char *str, t_spec *spec, t_buffer *buffer)
 {
 	size_t	len;
 
@@ -30,4 +30,5 @@ void	format_s(char *str, t_spec *spec, t_buffer *buffer)
 	buffer_add_str(buffer, str, len);
 	if (spec->width > -1 && len < (size_t)spec->width && spec->flag_minus)
 		buffer_add_char(buffer, ' ', spec->width - len);
+	return (1);
 }

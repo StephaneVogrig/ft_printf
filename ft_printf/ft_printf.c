@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:00:52 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 11:44:51 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:41:23 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@
 
 		0	For d, i, o, u, x and X conversions, the converted value
             is padded on the left with zeros rather than blanks.
-			It is ignored if flag - is present
+			It is ignored if flag '-' is present'.
+			it is ignored if precision is present.
 
 		-	left align on the field boundary. The converted value is padded
 			on the right with blanks.
@@ -110,7 +111,9 @@ int	ft_printf(const char *format, ...)
 	va_list		args;
 	t_buffer	buffer;
 	ssize_t		writed;
+	int			spec_errors;
 
+	spec_errors = 0;
 	if (!format)
 		return (-1);
 	buffer.offset = 0;
@@ -120,7 +123,7 @@ int	ft_printf(const char *format, ...)
 	{
 		format = parse_before_arg(format, &buffer);
 		if (*format == '%')
-			format = parse_arg(format + 1, &buffer, args);
+			format = parse_arg(format + 1, &buffer, args, &spec_errors);
 	}
 	va_end(args);
 	writed = buffer_print(buffer);

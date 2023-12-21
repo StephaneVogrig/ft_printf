@@ -6,7 +6,7 @@
 #    By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2023/12/21 12:52:46 by svogrig          ###   ########.fr        #
+#    Updated: 2023/12/21 16:45:44 by svogrig          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,16 @@ SRCS 		:=	ft_printf.c \
 				parsing.c \
 				specification_set.c \
 				arg_to_ll.c \
-				ull_to_str.c \
+				format_u.c \
+				format_pc.c \
 				format_i.c \
 				format_c.c \
 				format_p.c \
 				format_s.c \
 				format_ll.c \
+				format_ull.c \
+				format_is_set.c\
+				ull_to_str.c \
 				ft_utils.c
 
 SRCS		:=	$(SRCS:%=$(SRC_DIR)/%)

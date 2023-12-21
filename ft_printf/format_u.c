@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_i.c                                         :+:      :+:    :+:   */
+/*   format_u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 13:01:11 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 13:44:56 by svogrig          ###   ########.fr       */
+/*   Created: 2023/12/21 13:12:55 by svogrig           #+#    #+#             */
+/*   Updated: 2023/12/21 16:32:48 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	format_i(va_list args, t_spec *spec, t_buffer *buffer)
+int	format_u(va_list args, t_spec *spec, t_buffer *buffer)
 {
-	long long	ll;
-	char		str[LEN_MAXLONGLONG];
-	int			len_nbr;
+	char				str[LEN_MAXLONGLONG];
+	unsigned long long	ull;
+	int					len_nbr;
 
-	str[0] = '+';
-	ll = arg_to_ll(args, spec);
-	if (ll == LLONG_MIN)
-		format_ll(spec, buffer, "-9223372036854775808", 19);
+	ull = arg_to_ull(args, spec);
+	if (ull == 0)
+		spec->conversion = 'd';
+	if (spec->conversion == 'x')
+		len_nbr = ull_to_str_hexalower(str, ull);
+	else if (spec->conversion == 'X')
+		len_nbr = ull_to_str_hexaupper(str, ull);
 	else
-	{
-		if (ll < 0)
-		{
-			str[0] = '-';
-			ll *= -1;
-		}
-		len_nbr = ull_to_str_dec(str, ll);
-		format_ll(spec, buffer, str, len_nbr);
-	}
+		len_nbr = ull_to_str_dec(str, ull);
+	format_ull(spec, buffer, str, len_nbr);
 	return (1);
 }

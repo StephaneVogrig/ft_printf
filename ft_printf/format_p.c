@@ -6,13 +6,13 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 19:20:44 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 12:33:15 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 13:43:32 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	format_p(void *p, t_spec *spec, t_buffer *buffer)
+int	format_p(void *p, t_spec *spec, t_buffer *buffer)
 {
 	char				str[LEN_MAXLONGLONG];
 	unsigned long long	ull;
@@ -34,4 +34,5 @@ void	format_p(void *p, t_spec *spec, t_buffer *buffer)
 		spec->conversion = 'x';
 		format_ull(spec, buffer, str, len_str);
 	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 04:07:22 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 05:44:02 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ int		ull_to_str(char *str, unsigned long long n, int base_n, char *base_str);
 int		ull_to_str_dec(char *str, unsigned long long n);
 int 	ull_to_str_hexalower(char *str, unsigned long long n);
 int 	ull_to_str_hexaupper(char *str, unsigned long long n);
+
+void	format_ull(t_spec *spec, t_buffer *buffer, char *str, int len_str);
 
 #endif

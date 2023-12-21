@@ -6,7 +6,7 @@
 #    By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2023/12/21 02:03:28 by svogrig          ###   ########.fr        #
+#    Updated: 2023/12/21 05:44:32 by svogrig          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS 		:=	buffer.c \
 				convert_p.c \
 				convert_s.c \
 				convert_u.c \
-				convert_x.c \
+				format.c \
 				ft_isdigit.c \
 				ft_memchr.c \
 				ft_memcpy.c \

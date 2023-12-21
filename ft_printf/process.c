@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:22:30 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 04:08:38 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 05:05:05 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	convert_arg(va_list args, t_spec *spec, t_buffer *buffer)
 	else if (spec->conversion == 'u')
 		convert_u(args, spec, buffer);
 	else if (spec->conversion == 'x' || spec->conversion == 'X')
-		convert_x(args, spec, buffer);
+		convert_u(args, spec, buffer);
 }
 
 const char	*process_arg(const char *format, t_buffer *buffer, va_list args)

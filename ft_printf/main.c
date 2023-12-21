@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:03:12 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 04:24:56 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 05:17:08 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	test_ptr()
 
 	str_null =  NULL;
 	printf("\n");
-	printf("test string\n--------------------------\n");
+	printf("test ptr\n--------------------------\n");
 	result = ft_printf("ptr null = %p", str_null);
 	printf(" | %i\n", result);
 	result = printf("ptr null = %p", str_null);
@@ -258,6 +258,12 @@ void	test_x(void)
 	printf(" | %i\n", result);
 	result = printf("0 = %x", 0);
 	printf(" | %i\n", result);
+
+	result = ft_printf("214 = %#-18.10x", 214);
+	printf(" | %i\n", result);
+	result = printf("214 = %#-18.10x", 214);
+	printf(" | %i\n", result);
+	printf("\n");
 	printf("--------------------------\n");
 }
 
@@ -595,11 +601,11 @@ int	main(void)
 	// test_1();
 	// test_char();
 	// test_str();
-	test_ptr();
+	// test_ptr();
 	// test_d();
 	// test_int();
-	// test_unsigned_int();
-	// test_x();
+	test_unsigned_int();
+	test_x();
 	// test_X();
 	// test_purcent_logic();
 	// test_purcent_crazy();

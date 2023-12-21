@@ -6,7 +6,7 @@
 #    By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2023/12/19 02:37:30 by svogrig          ###   ########.fr        #
+#    Updated: 2023/12/21 02:03:28 by svogrig          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,24 @@ NAME = libftprintf.a
 #------------------------------------------------------------------------------#
 
 SRC_DIR		:=	.
-SRCS 		:=	ft_printf.c\
-				print_c.c\
-				print_i.c\
-				print_ll.c\
-				print_p.c\
-				print_s.c	\
-				print_ui.c \
-				print_ull.c 
+SRCS 		:=	buffer.c \
+				convert_c.c \
+				convert_i.c \
+				convert_p.c \
+				convert_s.c \
+				convert_u.c \
+				convert_x.c \
+				ft_isdigit.c \
+				ft_memchr.c \
+				ft_memcpy.c \
+				ft_printf.c \
+				ft_strchr.c \
+				ft_strlen.c \
+				process.c \
+				specification_set.c \
+				specification.c \
+				ull_from_arg.c \
+				ull_to_str.c
 
 SRCS		:=	$(SRCS:%=$(SRC_DIR)/%)
 
@@ -34,7 +44,7 @@ OBJS 		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS		:=	$(OBJS:.o=.d)
 
 CC			:=	cc
-CFLAGS		:= 	-Wall -Wextra -Werror
+CFLAGS		:= 	-Wall -Wextra -Werror -g
 CPPFLAGS	:=	-MMD -MP
 AR			:=	ar
 ARFLAGS		:=	-r -c -s

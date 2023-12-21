@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_s.c                                          :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 19:19:03 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/18 21:10:17 by svogrig          ###   ########.fr       */
+/*   Created: 2023/10/31 23:03:37 by svogrig           #+#    #+#             */
+/*   Updated: 2023/12/19 21:50:46 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	print_s(char *str)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
+	unsigned char	*ptr;
+	unsigned char	uchar;
 
-	if (!str)
-		return (write(1, "(null)", 6));
-	i = 0;
-	while (str[i])
-		i++;
-	return (write(1, str, i));
+	ptr = (unsigned char *)s;
+	uchar = (unsigned char)c;
+	while (n)
+	{
+		if (*ptr == uchar)
+			return (ptr);
+		ptr++;
+		n--;
+	}
+	return (NULL);
 }

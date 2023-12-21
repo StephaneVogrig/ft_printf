@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:00:52 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/19 04:20:21 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 03:27:22 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,78 +29,102 @@
 	'X' print a number in hexadecimal uppercase format
 	'%' prints '%'
 
-		%[flags][width][.precision][length]specifier
+		%[flags][field width][.precision][length]specifier
 		
-	flags : '#' '0' '-' ' ' '+'
-	length : 'hh' 'h' 'l' 'll' 'q' 'L' 'j' 'z' 'Z' 't'
+	flags : # 0 - ' ' +
+		There may be an "unlimited" number of these flags.
+		If the specifier is missing, are printed in the order :
+			- one # if present in the format,
+			- one + if present in the format,
+			- one ' ' if present in the format and not '+'
+			- one - if present in the format.
+			- one 0 if present in the format and not '-'
+
+		#	for x conversion begin a nonzero conversion with '0x'
+			for X conversion begin a nonzero conversion with '0X'
+
+		0	For d, i, o, u, x and X conversions, the converted value
+            is padded on the left with zeros rather than blanks.
+			It is ignored if flag - is present
+
+		-	left align on the field boundary. The converted value is padded
+			on the right with blanks.
+			Flag '0' is ignored.
+
+		' '	for d and i, a blank should be left before positive value
+			is ignored if flag + is present.
+
+		+	for d and i, add '+' behind a positive value.
+			If precision is passed '+' is added before precision.
+			If field width is passed and flag 0,
+				'+' replace the first '0' in the field
+
+	field width : decimal digit string with nonzero first digit.
+		Specify a minimum field width.
+		- If overflow during the decimal digit string conversion,
+			- stop format conversion,
+			- print the string already set
+			- return -1.
+		- If converted value has more characters the field is expanded
+		  to contain all charachters.
+		- If converted value has fewer characters it will be padded whith space
+		  or '0' if flag '0' and no flag '-'.
+		- If flag '-', converted value is left align and ' ' complet the field
+
+	precision : '.' followed by an optional positive decimal string
+		- There may be an "unlimited" number of zero to begin the decimal string
+		- If no decimal sring is present, 0 is use by default
+		- The precision value is limited to an int.
+		- If overflow during the decimal digit string conversion,
+			- stop format conversion,
+			- print the string already set
+			- return -1.
+		- If the specifier is missing :
+			- if '.' is not present in format,
+					nothing is printed .
+			- if '.' without decimal string is present,
+					'.0' is printed.
+			- if '.' followed by decimal string is present,
+					'.' followed by precision value convert in string is printed
+		* For d, i, o, u, x, and X conversions, precision give the minimum
+		  digits to appear. '0' is placed if necessary.
+		* For s conversion, give the maximum number of characters to be printed
+
+	length : hh h l ll q L j z Z t
+
+	specifier : d i o u x X e E f F g G a A c s p n m %
+		If the specifier is missing
+			- if it is the first missing AND is at the end of format
+				- nnothing of the conversion is printing
+				- return -1
+			- in all other case a string of the data conversion is printing
+			  as describes in their own part.
+				
+
+	
 	characters used :diuoxXfFeEgGaAcspn%-+ #0*.hljztL
 */
 
-ssize_t	print_spec(const char *format, va_list args)
-{
-	int				i;
-	t_specification	spec;
-
-	i = 0;
-	specification_init(&spec);
-
-	while (format[i])
-	{
-		while (format[i] && memchr("#0- +", format[i], 5)) // check_flags
-		while (format[i] >= '0' && format[i] < = '9') // check_width
-			specifier.width = specifier.width * 10 + format[i++] - '0';
-		check_precision
-		check_len_mod
-		check_conversion
-		i++;
-	}
-
-}
-
-ssize_t	print_arg(const char *format, va_list args)
-{
-	if (*format == 'c')
-		return (print_c(va_arg(args, int)));
-	if (*format == 's')
-		return (print_s(va_arg(args, char *)));
-	if (*format == '%')
-		return (write(1, "%", 1));
-	if (*format == 'p')
-		return (print_p(va_arg(args, void*)));
-	if (*format == 'd' || *format == 'i')
-		return (print_i(va_arg(args, int)));
-	if (*format == 'u')
-		return (print_ui(va_arg(args, unsigned int)));
-	if (*format == 'x')
-		return (print_uix(va_arg(args, unsigned int)));
-	if (*format == 'X')
-		return (print_uiX(va_arg(args, unsigned int)));
-	if (*format == '\0')
-		return (write(1, format - 1, 1));
-	return (print_spec(format, args));
-//	return (write(1, format - 1, 2));
-}
-
 int	ft_printf(const char *format, ...)
 {
-	va_list	args;
-	ssize_t		len_write;
+	va_list		args;
+	t_buffer	buffer;
+	ssize_t		writed;
 
-	if (!format || (*format == '%' && format[1] == '\0'))
+	if (!format)
 		return (-1);
-	len_write = 0;
+	buffer.offset = 0;
+	buffer.writed = 0;
 	va_start(args, format);
-	while (*format)
+	while (format && *format)
 	{
-		while (*format && *format != '%')
-			len_write += write(1, format++, 1);
+		format = process_before_arg(format, &buffer);
 		if (*format == '%')
-		{
-			len_write += print_arg(++format, args);
-			if (*format)
-				format++;
-		}
+			format = process_arg(format + 1, &buffer, args);
 	}
 	va_end(args);
-	return (len_write);
+	writed = buffer_print(buffer);
+	if (!format)
+		return (-1);
+	return (writed);
 }

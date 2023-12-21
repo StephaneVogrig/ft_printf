@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_p.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 19:20:44 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/18 22:30:00 by svogrig          ###   ########.fr       */
+/*   Created: 2023/10/31 19:56:25 by svogrig           #+#    #+#             */
+/*   Updated: 2023/12/20 20:11:11 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	print_p(void *p)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (!p)
-		return(write(1, "(nil)", 5));
-	return (write(1, "0x", 2) + print_ullx((unsigned long long)p));
+	unsigned char	*p_dest;
+	unsigned char	*p_src;
+
+	if (n > 0 && dest == NULL && src == NULL)
+		return (dest);
+	p_dest = (unsigned char *)dest;
+	p_src = (unsigned char *)src;
+	while (n)
+	{
+		*p_dest = *p_src;
+		p_dest++;
+		p_src++;
+		n--;
+	}
+	return (dest);
 }

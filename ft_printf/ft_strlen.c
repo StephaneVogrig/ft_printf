@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_i.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 19:28:01 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/18 20:22:06 by svogrig          ###   ########.fr       */
+/*   Created: 2023/10/31 19:41:41 by svogrig           #+#    #+#             */
+/*   Updated: 2023/12/20 20:05:06 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	print_i(int	n)
+size_t	ft_strlen(const char *s)
 {
-	long long ll;
+	int	i;
 
-	ll = n;
-	if (n < 0)
-		return(write(1, "-", 1) + print_ull(-ll));
-	return (print_ull(n));
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

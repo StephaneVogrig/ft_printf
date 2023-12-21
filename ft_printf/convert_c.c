@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specification.c                                    :+:      :+:    :+:   */
+/*   convert_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 04:18:57 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 04:09:09 by svogrig          ###   ########.fr       */
+/*   Created: 2023/12/20 17:37:29 by svogrig           #+#    #+#             */
+/*   Updated: 2023/12/21 04:07:40 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include "ft_printf.h"
 
-void	specification_init(t_spec *specification)
+void	convert_c(char c, t_spec *spec, t_buffer *buffer)
 {
-	specification->flag_hash = 0;
-	specification->flag_zero = 0;
-	specification->flag_minus = 0;
-	specification->flag_space = 0;
-	specification->flag_plus = 0;
-	specification->width = -1;
-	//specification->dot = 0;
-	specification->precision = -1;
-	specification->length[0] = 0;
-	specification->length[1] = 0;
-	specification->conversion = 0;
+	if (spec->width > 1 && !spec->flag_minus)
+		buffer_add_char(buffer, ' ', spec->width - 1);
+	buffer_add_char(buffer, c, 1);
+	if (spec->width > 1 && spec->flag_minus)
+		buffer_add_char(buffer, ' ', spec->width - 1);
 }

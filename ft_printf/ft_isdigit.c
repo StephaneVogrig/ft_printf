@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ui.c                                         :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 18:41:01 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/18 20:04:26 by svogrig          ###   ########.fr       */
+/*   Created: 2023/10/31 15:26:50 by svogrig           #+#    #+#             */
+/*   Updated: 2023/11/14 16:58:29 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-ssize_t	print_ui(unsigned int n)
+int	ft_isdigit(int c)
 {
-	return (print_ull((unsigned long long)n));
-}
-
-ssize_t	print_uix(unsigned int n)
-{
-	return (print_ullx((unsigned long long)n));
-}
-
-ssize_t	print_uiX(unsigned int n)
-{
-	return (print_ullX((unsigned long long)n));
+	if ('0' <= c && c <= '9')
+		return (2048);
+	return (0);
 }

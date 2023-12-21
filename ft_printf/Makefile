@@ -6,7 +6,7 @@
 #    By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2023/12/21 05:44:32 by svogrig          ###   ########.fr        #
+#    Updated: 2023/12/21 08:35:38 by svogrig          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,8 @@ SRCS 		:=	buffer.c \
 				process.c \
 				specification_set.c \
 				specification.c \
-				ull_from_arg.c \
-				ull_to_str.c
+				arg_to_nbr.c \
+				nbr_to_str.c
 
 SRCS		:=	$(SRCS:%=$(SRC_DIR)/%)
 

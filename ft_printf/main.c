@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:03:12 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 05:17:08 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 06:09:57 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,25 @@ void	test_ptr()
 	result = printf("ptr null = %p", str_null);
 	printf(" | %i\n", result);
 	printf("\n");
+
+	result = ft_printf("ptr null = %10p", str_null);
+	printf(" | %i\n", result);
+	result = printf("ptr null = %10p", str_null);
+	printf(" | %i\n", result);
+	printf("\n");
+
+	result = ft_printf("ptr null = %-10p", str_null);
+	printf(" | %i\n", result);
+	result = printf("ptr null = %-10p", str_null);
+	printf(" | %i\n", result);
+	printf("\n");
+
+	result = ft_printf("ptr null = %p", str_null);
+	printf(" | %i\n", result);
+	result = printf("ptr null = %2p", str_null);
+	printf(" | %i\n", result);
+	printf("\n");
+
 	result = ft_printf("ptr = %p", str);
 	printf(" | %i\n", result);
 	result = printf("ptr = %p", str);
@@ -601,10 +620,10 @@ int	main(void)
 	// test_1();
 	// test_char();
 	// test_str();
-	// test_ptr();
+	test_ptr();
 	// test_d();
 	// test_int();
-	test_unsigned_int();
+	// test_unsigned_int();
 	test_x();
 	// test_X();
 	// test_purcent_logic();

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 05:42:33 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 05:42:58 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 06:02:42 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	format_ull(t_spec *spec, t_buffer *buffer, char *str, int len_str)
 	if (spec->precision > len_str)
 		len_precision = spec->precision - len_str;
 	len_occuped = len_str + len_precision + len_ox;
-	
 	if (is_set_field_right_nonzero(spec, len_occuped))
 		buffer_add_char(buffer, ' ', spec->width - len_occuped);
 	if (spec->flag_hash && spec->conversion == 'x')

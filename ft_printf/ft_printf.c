@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:00:52 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 15:41:23 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 20:00:18 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,19 +91,17 @@
 		  digits to appear. '0' is placed if necessary.
 		* For s conversion, give the maximum number of characters to be printed
 
-	length : hh h l ll q L j z Z t
+	length : l ll modify the type of variable.
+		Other lenght in standard printf : hh h q L j z Z t.
 
-	specifier : d i o u x X e E f F g G a A c s p n m %
+	specifier : d i o u x X c s %
 		If the specifier is missing
 			- if it is the first missing AND is at the end of format
 				- nnothing of the conversion is printing
 				- return -1
 			- in all other case a string of the data conversion is printing
 			  as describes in their own part.
-				
-
-	
-	characters used :diuoxXfFeEgGaAcspn%-+ #0*.hljztL
+		Other specifier in standard printf : e E f F g G a A p n m 
 */
 
 int	ft_printf(const char *format, ...)

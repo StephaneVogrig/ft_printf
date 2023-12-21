@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:01:55 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 13:01:58 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 20:17:43 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		n--;
 	}
 	return (NULL);
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned char	*p_dest;
-	unsigned char	*p_src;
-
-	if (n > 0 && dest == NULL && src == NULL)
-		return (dest);
-	p_dest = (unsigned char *)dest;
-	p_src = (unsigned char *)src;
-	while (n)
-	{
-		*p_dest = *p_src;
-		p_dest++;
-		p_src++;
-		n--;
-	}
-	return (dest);
 }
 
 char	*ft_strchr(const char *s, int c)

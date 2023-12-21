@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 16:40:15 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/21 20:17:52 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int					is_set_hexa_hash(t_spec *spec);
 /* ft utils ------------------------------------------------------------------*/
 int					ft_isdigit(int c);
 void				*ft_memchr(const void *s, int c, size_t n);
-void				*ft_memcpy(void *dest, const void *src, size_t n);
 char				*ft_strchr(const char *s, int c);
 size_t				ft_strlen(const char *s);
 

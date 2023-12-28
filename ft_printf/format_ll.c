@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   format_ll.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:01:37 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/22 00:31:17 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/28 00:16:45 by stephane         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "ft_printf.h"
 
@@ -16,10 +16,10 @@ void	format_ll_add_sign(t_spec *spec, t_buffer *buffer, char *str)
 {
 	if (str[0] == '-')
 		buffer_add_str(buffer, "-", 1);
-	if (spec->flag_space && str[0] == '+')
-		buffer_add_str(buffer, " ", 1);
-	if (spec->flag_plus && str[0] == '+')
+	else if (spec->flag_plus)
 		buffer_add_str(buffer, "+", 1);
+	else if (spec->flag_space)
+		buffer_add_str(buffer, " ", 1);
 }
 
 void	format_ll(t_spec *spec, t_buffer *buffer, char *str, int len_nbr)
@@ -29,7 +29,7 @@ void	format_ll(t_spec *spec, t_buffer *buffer, char *str, int len_nbr)
 	int	len_occuped;
 
 	len_sign = 0;
-	if (str[0] == '-' || spec->flag_plus)
+	if (str[0] == '-' || spec->flag_plus || spec->flag_space)
 		len_sign = 1;
 	len_precision = 0;
 	if (spec->precision == 0 && str[LEN_MAXLONGLONG - 1] == '0')

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:03:12 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/22 00:16:00 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/28 00:10:58 by stephane         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "ft_printf.h"
 #include <stdio.h>
@@ -624,13 +624,27 @@ void	test_field_width(void)
 
 int	main(void)
 {	
-	// int	result;
+	int	result;
 
 
-	{
-	ft_printf("%d\n", ft_printf("%#-5x", 52625));
-	printf("%d\n", printf("%#-5x", 52625));
-}
+	
+	// ft_printf("%d\n", ft_printf("%#-5x", 52625));
+	// printf("%d\n", printf("%#-5x", 52625));
+	// printf(" | %d\n", ft_printf("%#10.10p", -52625));
+	// printf(" | %d\n", printf("%#10.10p", -52625));
+	printf(" | %d\n", ft_printf("% 3d", 0));
+	printf(" | %d\n", printf("% 3d", 0));
+	printf(" | %d\n", ft_printf("% 7d", 33));
+	printf(" | %d\n", printf("% 7d", 33));
+	printf(" | %d\n", ft_printf("% -3d", 0));
+	printf(" | %d\n", printf("% -3d", 0));
+	printf(" | %d\n", ft_printf("% -7d", 33));
+	printf(" | %d\n", printf("% -7d", 33));
+	printf(" | %d\n", ft_printf("% +5d", 35));
+	printf(" | %d\n", printf("% +5d", 35));
+ft_printf("% 7d\n", 33);
+printf("% 7d\n", 33);
+printf("123456789\n", 33);
 	// result = ft_printf("%k%      00%00#10.lk", 0);
 	// printf(" | %i\n", result);
 	// result = printf("%k%      00%00#10.lk", 0);

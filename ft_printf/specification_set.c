@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   specification_set.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 19:40:20 by svogrig          ###   ########.fr       */
+/*   Updated: 2023/12/28 18:10:53 by stephane         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "ft_printf.h"
 
@@ -87,6 +87,12 @@ const char	*set_length(const char *format, t_spec *spec)
 	{
 		spec->length[0] = *format++;
 		if (*format == 'l')
+			spec->length[1] = *format++;
+	}
+	if (*format == 'h')
+	{
+		spec->length[0] = *format++;
+		if (*format == 'h')
 			spec->length[1] = *format++;
 	}
 	return (format);

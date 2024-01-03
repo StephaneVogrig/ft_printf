@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:03:12 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 15:24:27 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:59:27 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,6 +16,7 @@
 void	tests_char(void);
 void	tests_d(void);
 void	tests_field_width(void);
+void	tests_field_width_etoile(void);
 void	tests_flags(void);
 void	tests_f(void);
 void	tests_hi(void);
@@ -41,13 +42,14 @@ int	main(void)
 	// tests_char();
 	// tests_d();
 	// tests_field_width();
+	tests_field_width_etoile();
 	// tests_flags();
 	// tests_hi();
 	// tests_i();
 	// tests_il();
 	// tests_ill();
 	// tests_precision();
-	tests_precision_etoile();
+	// tests_precision_etoile();
 	// tests_ptr();
 	// tests_purcent();
 	// tests_str();

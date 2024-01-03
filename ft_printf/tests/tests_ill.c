@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:42:52 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/02 17:52:49 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 05:53:05 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -60,5 +60,8 @@ void tests_ill(void)
 	printf("\n");
 	printf(" | %i (ft_printf)\n", ft_printf("%%-.10lli, 42ll = %-.10lli", 42ll));
 	printf(" | %i\n", printf("%%-.10lli, 42ll = %-.10lli", 42ll));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%.0lli, 42ll = %.0lli", 0ll));
+	printf(" | %i\n", printf("%%.0lli, 42ll = %.0lli", 0ll));
 	printf("--------------------------\n");
 }

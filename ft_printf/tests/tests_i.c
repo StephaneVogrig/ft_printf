@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:46:19 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/02 17:31:51 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:39:41 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -60,5 +60,8 @@ void	tests_i(void)
 	printf("\n");
 	printf(" | %i (ft_printf)\n", ft_printf("%%-.10i, 42 = %-.10i", 42));
 	printf(" | %i\n", printf("%%-.10i, 42 = %-.10i", 42));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%+04i, 42 = %+04i", 0));
+	printf(" | %i\n", printf("%%+04i, 42 = %+04i", 0));
 	printf("--------------------------\n");
 }

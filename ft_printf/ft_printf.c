@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:00:52 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/27 21:12:07 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 03:58:22 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,14 +20,13 @@ int	ft_printf(const char *format, ...)
 	int			spec_errors;
 
 	spec_errors = 0;
-	if (!format)
-		return (-1);
 	buffer.offset = 0;
 	buffer.writed = 0;
 	va_start(args, format);
 	while (format && *format)
 	{
-		format = parse_before_arg(format, &buffer);
+		while (*format && *format != '%')
+			buffer_add_char(&buffer, *format++, 1);
 		if (*format == '%')
 			format = parse_arg(format + 1, &buffer, args, &spec_errors);
 	}

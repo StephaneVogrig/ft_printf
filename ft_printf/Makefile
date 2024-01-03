@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+         #
+#    By: stephane <stephane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2023/12/21 16:45:44 by svogrig          ###   ########.fr        #
+#    Updated: 2024/01/03 15:16:07 by stephane         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME = libftprintf.a
 
@@ -19,18 +19,17 @@ NAME = libftprintf.a
 SRC_DIR		:=	.
 SRCS 		:=	ft_printf.c \
 				buffer.c \
-				parsing.c \
-				specification_set.c \
-				arg_to_ll.c \
 				format_u.c \
 				format_pc.c \
 				format_i.c \
 				format_c.c \
 				format_p.c \
 				format_s.c \
-				format_ll.c \
-				format_ull.c \
-				format_is_set.c\
+				format_x.c \
+				format_X.c \
+				nbrstr_to_buffer.c \
+				parsing.c \
+				set_specification.c \
 				ull_to_str.c \
 				ft_utils.c
 

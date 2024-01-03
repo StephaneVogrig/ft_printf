@@ -6,27 +6,41 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:22:30 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/27 21:19:04 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:27:54 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-void	specification_init(t_spec *specification)
+static unsigned long long	arg_to_ull(va_list args, t_spec *spec)
 {
-	specification->flag_hash = 0;
-	specification->flag_zero = 0;
-	specification->flag_minus = 0;
-	specification->flag_space = 0;
-	specification->flag_plus = 0;
-	specification->width = -1;
-	specification->precision = -1;
-	specification->length[0] = 0;
-	specification->length[1] = 0;
-	specification->conversion = 0;
+	if (spec->length[0] == 'l')
+	{
+		if (spec->length[1] == 'l')
+			return (va_arg(args, unsigned long long));
+		return ((unsigned long long)va_arg(args, unsigned long));
+	}
+	return ((unsigned long long)va_arg(args, unsigned int));
 }
 
-int	convert_arg(va_list args, t_spec *spec, t_buffer *buffer)
+static long long	arg_to_ll(va_list args, t_spec *spec)
+{
+	int	arg;
+	if (spec->length[0] == 'l')
+	{
+		if (spec->length[1] == 'l')
+			return (va_arg(args, long long));
+		return ((long long)va_arg(args, long));
+	}
+	arg = va_arg(args, int);
+	if (arg == INT_MIN)
+		return (INT_MIN);
+	if (arg < 0)
+		return (-(long long)(-arg));
+	return ((long long)arg);
+}
+
+static int	format_arg(va_list args, t_spec *spec, t_buffer *buffer)
 {
 	int	success;
 
@@ -39,12 +53,14 @@ int	convert_arg(va_list args, t_spec *spec, t_buffer *buffer)
 		success = format_pc(buffer);
 	else if (spec->conversion == 'p')
 		success = format_p(va_arg(args, void *), spec, buffer);
-	else if (spec->conversion == 'd' || spec->conversion == 'i')
-		success = format_i(args, spec, buffer);
+	else if (spec->conversion == 'i' || spec->conversion == 'd')
+		success = format_i(arg_to_ll(args, spec), spec, buffer);
 	else if (spec->conversion == 'u')
-		success = format_u(args, spec, buffer);
-	else if (spec->conversion == 'x' || spec->conversion == 'X')
-		success = format_u(args, spec, buffer);
+		success = format_u(arg_to_ull(args, spec), spec, buffer);
+	else if (spec->conversion == 'x')
+		success = format_x(arg_to_ull(args, spec), spec, buffer);
+	else if (spec->conversion == 'X')
+		success = format_X(arg_to_ull(args, spec), spec, buffer);
 	return (success);
 }
 
@@ -53,37 +69,20 @@ const char	*parse_arg(const char *format, t_buffer *buffer, va_list args, \
 {
 	t_spec	spec;
 
-	specification_init(&spec);
 	format = set_flags(format, &spec);
-	format = set_widthfield(format, &spec);
+	format = set_widthfield(format, &spec, args);
 	if (!format)
 		return (NULL);
-	format = set_precision(format, &spec);
+	format = set_precision(format, &spec, args);
 	if (!format)
 		return (NULL);
 	format = set_length(format, &spec);
 	format = set_conversion(format, &spec);
 	if (spec.conversion)
-		convert_arg(args, &spec, buffer);
+		format_arg(args, &spec, buffer);
 	else if ((*format == '\0') && (*spec_errors == 0))
 		return (NULL);
 	else
 		*spec_errors += buffer_add_spec(buffer, &spec);
-	return (format);
-}
-
-const char	*parse_before_arg(const char *format, t_buffer *buffer)
-{
-	while (*format)
-	{
-		if (*format == '%')
-			break ;
-		buffer->data[buffer->offset++] = *format++;
-		if (buffer->offset == BUFFER_SIZE)
-		{
-			buffer->writed += write(1, buffer->data, BUFFER_SIZE);
-			buffer->offset = 0;
-		}
-	}
 	return (format);
 }

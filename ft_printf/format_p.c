@@ -1,38 +1,33 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   format_p.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 19:20:44 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 13:43:32 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/03 07:36:13 by stephane         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "ft_printf.h"
+#define LEN_NIL 5
+
+static int	format_p_nil(t_spec *spec, t_buffer *buffer)
+{
+	if (spec->width > LEN_NIL && !spec->flag_minus)
+		buffer_add_char(buffer, ' ', spec->width - LEN_NIL);
+	buffer_add_str(buffer, "(nil)", LEN_NIL);
+	if (spec->width > LEN_NIL && spec->flag_minus)
+		buffer_add_char(buffer, ' ', spec->width - LEN_NIL);
+	return (1);
+}
 
 int	format_p(void *p, t_spec *spec, t_buffer *buffer)
 {
-	char				str[LEN_MAXLONGLONG];
-	unsigned long long	ull;
-	int					len_str;
-
 	if (!p)
-	{
-		if (!spec->flag_minus && spec->width > 5)
-			buffer_add_char(buffer, ' ', spec->width - 5);
-		buffer_add_str(buffer, "(nil)", 5);
-		if (spec->flag_minus && spec->width > 5)
-			buffer_add_char(buffer, ' ', spec->width - 5);
-	}
-	else
-	{
-		ull = (unsigned long long)p;
-		len_str = ull_to_str_hexalower(str, ull);
-		spec->flag_hash = '#';
-		spec->conversion = 'x';
-		format_ull(spec, buffer, str, len_str);
-	}
-	return (1);
+		return (format_p_nil(spec, buffer));
+	spec->flag_hash = '#';
+	return (format_x((unsigned long long)p, spec, buffer));
+	
 }

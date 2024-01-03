@@ -1,32 +1,26 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   format_u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:12:55 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 16:32:48 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/03 05:17:29 by stephane         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "ft_printf.h"
 
-int	format_u(va_list args, t_spec *spec, t_buffer *buffer)
+int	format_u(unsigned long long nbr, t_spec *spec, t_buffer *buffer)
 {
 	char				str[LEN_MAXLONGLONG];
-	unsigned long long	ull;
-	int					len_nbr;
+	t_nbrstr			nbrstr;
 
-	ull = arg_to_ull(args, spec);
-	if (ull == 0)
-		spec->conversion = 'd';
-	if (spec->conversion == 'x')
-		len_nbr = ull_to_str_hexalower(str, ull);
-	else if (spec->conversion == 'X')
-		len_nbr = ull_to_str_hexaupper(str, ull);
-	else
-		len_nbr = ull_to_str_dec(str, ull);
-	format_ull(spec, buffer, str, len_nbr);
+	nbrstr.is_zero = nbr == 0;
+	nbrstr.str = ull_to_str_dec(str, nbr);
+	nbrstr.len_nbr = str + LEN_MAXLONGLONG - nbrstr.str;
+	nbrstr.prefixe = 0;
+	nbrstr_to_buffer(buffer, spec, &nbrstr);
 	return (1);
 }

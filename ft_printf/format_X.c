@@ -1,44 +1,29 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   format_X.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 13:01:55 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 06:35:17 by stephane         ###   ########.fr       */
+/*   Created: 2024/01/03 03:17:48 by stephane          #+#    #+#             */
+/*   Updated: 2024/01/03 03:27:05 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+int	format_X(unsigned long long nbr, t_spec *spec, t_buffer *buffer)
 {
-	int	i;
+	char				str[MAX_DIGIT_HEXA];
+	t_nbrstr			nbrstr;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	nbrstr.is_zero = nbr == 0;
+	nbrstr.str = ull_to_str_hexaupper(str, nbr);
+	nbrstr.len_nbr = str + MAX_DIGIT_HEXA - nbrstr.str;
+	if (spec->flag_hash && nbr > 0)
+		nbrstr.prefixe = 'X';
+	else
+		nbrstr.prefixe = 0;
+	nbrstr_to_buffer(buffer, spec, &nbrstr);
+	return (1);
 }
-
-int	ft_isdigit(int c)
-{
-	if ('0' <= c && c <= '9')
-		return (2048);
-	return (0);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (c == '\0')
-		return ((char *)s);
-	return (NULL);
-}
-

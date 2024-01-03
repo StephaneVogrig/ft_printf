@@ -1,53 +1,58 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specification_set.c                                :+:      :+:    :+:   */
+/*   set_specification.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/28 18:10:53 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:36:13 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-/*
-	analyze the format string to set up the specification fields.
-	return:
-		- a pointeur on the first character that stop the analyze
-		- NULL in case of overflow during conversion of
-		  width field or precision
-*/
-
 const char	*set_flags(const char *format, t_spec *spec)
 {
-	char	*flag;
-
+	spec->flag_hash = 0;
+	spec->flag_zero = 0;
+	spec->flag_minus = 0;
+	spec->flag_space = 0;
+	spec->flag_plus = 0;
 	while (*format)
 	{
-		flag = ft_memchr("#0- +", *format, 5);
-		if (!flag)
-			return (format);
-		if (*flag == '#')
+		if (*format == '#')
 			spec->flag_hash = 1;
-		else if (*flag == '0')
+		else if (*format == '0')
 			spec->flag_zero = 1;
-		else if (*flag == '-')
+		else if (*format == '-')
 			spec->flag_minus = 1;
-		else if (*flag == ' ')
+		else if (*format == ' ')
 			spec->flag_space = 1;
-		else if (*flag == '+')
+		else if (*format == '+')
 			spec->flag_plus = 1;
+		else
+			return (format);
 		format++;
 	}
 	return (format);
 }
 
-const char	*set_widthfield(const char *format, t_spec *spec)
+const char	*set_widthfield(const char *format, t_spec *spec, va_list args)
 {
 	long long	w;
 
+	spec->width = -1;
+	if (*format == '*')
+	{
+		spec->width = va_arg(args, int);
+		if (spec->width < 0)
+		{
+			spec->flag_minus = 1;
+			spec->width = -spec->width;
+		}
+		return (++format);
+	}
 	if (!ft_isdigit(*format))
 		return (format);
 	w = 0;
@@ -62,13 +67,21 @@ const char	*set_widthfield(const char *format, t_spec *spec)
 	return (format);
 }
 
-const char	*set_precision(const char *format, t_spec *spec)
+const char	*set_precision(const char *format, t_spec *spec, va_list args)
 {
 	long long	p;
 
+	spec->precision = -1;
 	if (*format != '.')
 		return (format);
 	format++;
+	if (*format == '*')
+	{
+		spec->precision = va_arg(args, int);
+		if (spec->precision < 0)
+			spec->precision = -1;
+		return (++format);
+	}
 	p = 0;
 	while (ft_isdigit(*format))
 	{
@@ -83,13 +96,15 @@ const char	*set_precision(const char *format, t_spec *spec)
 
 const char	*set_length(const char *format, t_spec *spec)
 {
+	spec->length[0] = 0;
+	spec->length[1] = 0;
 	if (*format == 'l')
 	{
 		spec->length[0] = *format++;
 		if (*format == 'l')
 			spec->length[1] = *format++;
 	}
-	if (*format == 'h')
+	else if (*format == 'h')
 	{
 		spec->length[0] = *format++;
 		if (*format == 'h')
@@ -102,7 +117,10 @@ const char	*set_conversion(const char *format, t_spec *spec)
 {
 	char	*conversion;
 
-	conversion = ft_memchr("cspdiuxX%", *format, 9);
+	spec->conversion = 0;
+	if (!*format)
+		return (format);
+	conversion = ft_strchr("cspdiuxX%f", *format);
 	if (!conversion)
 		return (format);
 	spec->conversion = *format;

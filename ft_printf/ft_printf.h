@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/09 09:33:51 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:30:07 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include "vs_type.h"
 # include "float.h"
+# include "nbr_digit.h"
 
 # define BUFFER_SIZE 1024
 # define LEN_MAXLONGLONG 20
@@ -48,8 +49,7 @@ typedef struct s_spec {
 
 typedef struct s_nbrstr {
 	char	*str;
-	int		len_nbr;
-	char	prefixe;
+	int		nbr_digit;
 	char	is_zero;
 }	t_nbrstr;
 
@@ -95,16 +95,16 @@ int			format_x(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_X(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_f(double nbr, t_spec *spec, t_buffer *buffer);
 
-/* field ----------------------------------------------------------------*/
+/* field --------------------------------------------------------------------*/
 void		field_compute_empty_float(t_spec *spec, int nbr_digit_int);
+void		field_compute_empty_integer(t_spec *spec, int nbr_digit_int);
 void		field_empty_before_to_buffer(t_spec *spec, t_buffer *buffer);
 void		field_empty_after_to_buffer(t_spec *spec, t_buffer *buffer);
 
-
-/* ull to str ----------------------------------------------------------------*/
-char		*ull_to_str_dec(char *str, t_ui64 n);
-char		*ull_to_str_hexalower(char *str, t_ui64 n);
-char		*ull_to_str_hexaupper(char *str, t_ui64 n);
+/* ui64 to str --------------------------------------------------------------*/
+char		*ui64_to_str_dec(char *str, t_ui64 n);
+char		*ui64_to_str_hexalower(char *str, t_ui64 n);
+char		*ui64_to_str_hexaupper(char *str, t_ui64 n);
 
 /* math ----------------------------------------------------------------------*/
 t_float128	vs_pow(int p);

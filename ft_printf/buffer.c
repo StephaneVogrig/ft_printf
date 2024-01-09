@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:33:14 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 04:54:29 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:07:37 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -53,7 +53,7 @@ void	buffer_add_nbr(t_buffer *buffer, unsigned long long ull)
 	int		len_nbr;
 	char	*str_nbr;
 
-	str_nbr = ull_to_str_dec(str, ull);
+	str_nbr = ui64_to_str_dec(str, ull);
 	len_nbr = str + LEN_MAXLONGLONG - str_nbr;
 	buffer_add_str(buffer, str_nbr, len_nbr);
 }

@@ -1,16 +1,16 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nbr_digit_ui.c                                     :+:      :+:    :+:   */
+/*   nbr_digit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 15:50:33 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/07 04:51:06 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:30:24 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "nbr_digit_ui.h"
+#include "nbr_digit.h"
 
 int nbr_digit_ui8(t_ui8 n)
 {
@@ -90,4 +90,17 @@ int	nbr_digit_ui64(t_ui64 n)
 	if (n < 10000000000000000000ul)
 		return (19);
 	return (20);
+}
+
+int	nbr_digit_float64_integer_part(t_float64 n)
+{
+	int	i;
+
+	i = 1;
+	while(n >= 10)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
 }

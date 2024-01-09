@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:26:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 15:28:23 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:25:35 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -39,19 +39,6 @@ t_round	compute_round(t_float128 nbr, int precision)
 	if (round.decpart == 0)
 		round.nbr_digit = 0;
 	return (round);
-}
-
-int	nbr_digit_integer_part(double nbr)
-{
-	int	i;
-
-	i = 1;
-	while(nbr >= 10)
-	{
-		nbr /= 10;
-		i++;
-	}
-	return (i);
 }
 
 double	integer_to_buffer(t_float128 nbr, int power10, t_buffer *buffer)
@@ -100,7 +87,7 @@ void	double_to_buffer(t_float64 nbr, t_spec *spec, t_buffer *buffer)
 	t_round		round;
 	t_float64	decimal;
 
-	nbr_digit_int = nbr_digit_integer_part(nbr);
+	nbr_digit_int = nbr_digit_float64_integer_part(nbr);
 	decimal = float64_get_decimal_part(nbr);
 	round = compute_round(decimal, spec->precision);
 	field_compute_empty_float(spec, nbr_digit_int);

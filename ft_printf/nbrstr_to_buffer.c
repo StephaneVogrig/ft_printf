@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 01:16:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 16:12:35 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:01:17 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -22,37 +22,25 @@ void	prefixe_to_buffer(t_buffer *buffer, char prefixe)
 		buffer_add_char(buffer, prefixe, 1);	
 }
 
-static void	compute_lengths(t_spec *spec, t_nbrstr *ns)
+static void	precision_compute(t_spec *spec, int nbr_digit_int)
+{	
+	if (spec->precision > nbr_digit_int)
+		spec->precision -= nbr_digit_int;
+	else
+		spec->precision = 0;
+}
+
+void	nbrstr_to_buffer(t_buffer *buffer, t_spec *spec, t_nbrstr *nbrstr)
 {
 	if (spec->precision > -1)
 		spec->flag_zero = 0;
-	if (ns->is_zero && spec->precision == 0)
-		ns->len_nbr = 0;
-	if (spec->precision > ns->len_nbr)
-		spec->precision -= ns->len_nbr;
-	else
-		spec->precision = 0;		
-	spec->width -= ns->len_nbr + spec->precision;
-	if (ns->prefixe == 'x' || ns->prefixe == 'X')
-		spec->width -= 2;
-	if (ns->prefixe == '+' || ns->prefixe == '-' || ns->prefixe == ' ')
-		spec->width -= 1;
-	if (spec->width < 0)
-		spec->width = 0;
-}
-
-void	nbrstr_to_buffer(t_buffer *buffer, t_spec *spec, t_nbrstr *ns)
-{
-	compute_lengths(spec, ns);
-	if (spec->right_align && spec->width && !spec->flag_zero)
-		buffer_add_char(buffer, ' ', spec->width);
-	if (ns->prefixe)
-		prefixe_to_buffer(buffer, ns->prefixe);
-	if (spec->right_align && spec->width && spec->flag_zero)
-		buffer_add_char(buffer, '0', spec->width);
+	if (nbrstr->is_zero && spec->precision == 0)
+		nbrstr->nbr_digit = 0;	
+	precision_compute(spec, nbrstr->nbr_digit);
+	field_compute_empty_integer(spec, nbrstr->nbr_digit);
+	field_empty_before_to_buffer(spec, buffer);
 	if (spec->precision)
 		buffer_add_char(buffer, '0', spec->precision);
-	buffer_add_str(buffer, ns->str, ns->len_nbr);
-	if (spec->left_align && spec->width)
-		buffer_add_char(buffer, ' ', spec->width);
+	buffer_add_str(buffer, nbrstr->str, nbrstr->nbr_digit);
+	field_empty_after_to_buffer(spec, buffer);
 }

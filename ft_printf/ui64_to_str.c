@@ -1,18 +1,18 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ull_to_str.c                                       :+:      :+:    :+:   */
+/*   ui64_to_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:32:12 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/05 20:43:31 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:10:49 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-char	*ull_to_str_dec(char *str, t_ui64 n)
+char	*ui64_to_str_dec(char *str, t_ui64 n)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ char	*ull_to_str_dec(char *str, t_ui64 n)
 	return (&str[i]);
 }
 
-char	*ull_to_str_hexaupper(char *str, t_ui64 n)
+char	*ui64_to_str_hexaupper(char *str, t_ui64 n)
 {
 	int		i;
 
@@ -40,7 +40,7 @@ char	*ull_to_str_hexaupper(char *str, t_ui64 n)
 	return (&str[i]);
 }
 
-char	*ull_to_str_hexalower(char *str, t_ui64 n)
+char	*ui64_to_str_hexalower(char *str, t_ui64 n)
 {
 	int		i;
 

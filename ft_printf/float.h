@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:13:52 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 15:39:06 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:21:39 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,10 +18,6 @@
 # define POSITIVE 1
 # define NEGATIVE -1
 # define FLOAT_MAX_EXPONENT 1024
-
-typedef	float 		t_float32;
-typedef double		t_float64;
-typedef long double	t_float128;
 
 typedef	union u_float64{
 	double	f;

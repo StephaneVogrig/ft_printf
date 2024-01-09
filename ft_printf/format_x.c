@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 20:52:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/05 20:40:29 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:09:25 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,12 +18,12 @@ int	format_x(t_ui64 nbr, t_spec *spec, t_buffer *buffer)
 	t_nbrstr			nbrstr;
 
 	nbrstr.is_zero = nbr == 0;
-	nbrstr.str = ull_to_str_hexalower(str, nbr);
-	nbrstr.len_nbr = str + MAX_DIGIT_HEXA - nbrstr.str;
+	nbrstr.str = ui64_to_str_hexalower(str, nbr);
+	nbrstr.nbr_digit = str + MAX_DIGIT_HEXA - nbrstr.str;
 	if (spec->flag_hash && nbr > 0)
-		nbrstr.prefixe = 'x';
+		spec->prefix = 'x';
 	else
-		nbrstr.prefixe = 0;
+		spec->prefix = 0;
 	nbrstr_to_buffer(buffer, spec, &nbrstr);
 	return (1);
 }

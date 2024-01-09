@@ -6,25 +6,12 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:11:22 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 02:37:45 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:13:09 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 
 #include "float.h"
-
-t_float64	float64_set_sign(t_float64 f, int sign)
-{
-	t_u_float64	uf;
-
-	uf.f = f;
-	
-	if (sign == POSITIVE)
-		uf.sign = 0;
-	else
-		uf.sign = 1;
-	return (uf.f);	
-}
 
 t_float64	float64_set_exponent(t_float64 f, int exponent)
 {

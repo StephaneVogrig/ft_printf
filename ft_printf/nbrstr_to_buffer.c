@@ -6,30 +6,20 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 01:16:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 15:05:26 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/07 04:25:29 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-static void	prefixe_to_buffer(t_buffer *buffer, char prefixe)
+void	prefixe_to_buffer(t_buffer *buffer, char prefixe)
 {
 	if (prefixe == 'x')
 		buffer_add_str(buffer, "0x", 2);
 	else if (prefixe == 'X')
 		buffer_add_str(buffer, "0X", 2);
-	else if (prefixe != 0)
+	else if (prefixe)
 		buffer_add_char(buffer, prefixe, 1);	
-}
-
-static int	left_align(t_spec *spec)
-{
-	return (spec->flag_minus > 0);	
-}
-
-static int	right_align(t_spec *spec)
-{
-	return (spec->flag_minus == 0);	
 }
 
 static void	compute_lengths(t_spec *spec, t_nbrstr *ns)
@@ -54,15 +44,15 @@ static void	compute_lengths(t_spec *spec, t_nbrstr *ns)
 void	nbrstr_to_buffer(t_buffer *buffer, t_spec *spec, t_nbrstr *ns)
 {
 	compute_lengths(spec, ns);
-	if (right_align(spec) && spec->width && !spec->flag_zero)
+	if (spec->right_align && spec->width && !spec->flag_zero)
 		buffer_add_char(buffer, ' ', spec->width);
 	if (ns->prefixe)
 		prefixe_to_buffer(buffer, ns->prefixe);
-	if (right_align(spec) && spec->width && spec->flag_zero)
+	if (spec->right_align && spec->width && spec->flag_zero)
 		buffer_add_char(buffer, '0', spec->width);
 	if (spec->precision)
 		buffer_add_char(buffer, '0', spec->precision);
 	buffer_add_str(buffer, ns->str, ns->len_nbr);
-	if (left_align(spec) && spec->width)
+	if (spec->left_align && spec->width)
 		buffer_add_char(buffer, ' ', spec->width);
 }

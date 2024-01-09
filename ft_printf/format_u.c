@@ -6,13 +6,13 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:12:55 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 05:17:29 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/05 20:38:56 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-int	format_u(unsigned long long nbr, t_spec *spec, t_buffer *buffer)
+int	format_u(t_ui64 nbr, t_spec *spec, t_buffer *buffer)
 {
 	char				str[LEN_MAXLONGLONG];
 	t_nbrstr			nbrstr;

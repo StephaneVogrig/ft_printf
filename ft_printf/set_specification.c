@@ -6,42 +6,60 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 15:36:13 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/05 22:34:56 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
+void	set_complements(t_spec *spec)
+{
+	if (spec->flag_minus)
+	{
+		spec->left_align = TRUE;
+		spec->right_align = FALSE;
+	}
+	else
+	{
+		spec->left_align = FALSE;
+		spec->right_align = TRUE;
+	}
+	spec->prefix = 0;
+	if (spec->flag_space)
+		spec->prefix = ' ';
+	if (spec->flag_plus)
+		spec->prefix = '+';
+}
+
 const char	*set_flags(const char *format, t_spec *spec)
 {
-	spec->flag_hash = 0;
-	spec->flag_zero = 0;
-	spec->flag_minus = 0;
-	spec->flag_space = 0;
-	spec->flag_plus = 0;
+	spec->flag_hash = FALSE;
+	spec->flag_zero = FALSE;
+	spec->flag_minus = FALSE;
+	spec->flag_space = FALSE;
+	spec->flag_plus = FALSE;
 	while (*format)
 	{
 		if (*format == '#')
-			spec->flag_hash = 1;
+			spec->flag_hash = TRUE;
 		else if (*format == '0')
-			spec->flag_zero = 1;
+			spec->flag_zero = TRUE;
 		else if (*format == '-')
-			spec->flag_minus = 1;
+			spec->flag_minus = TRUE;
 		else if (*format == ' ')
-			spec->flag_space = 1;
+			spec->flag_space = TRUE;
 		else if (*format == '+')
-			spec->flag_plus = 1;
+			spec->flag_plus = TRUE;
 		else
-			return (format);
+			break;
 		format++;
 	}
+	set_complements(spec);
 	return (format);
 }
 
 const char	*set_widthfield(const char *format, t_spec *spec, va_list args)
 {
-	long long	w;
-
 	spec->width = -1;
 	if (*format == '*')
 	{
@@ -49,28 +67,17 @@ const char	*set_widthfield(const char *format, t_spec *spec, va_list args)
 		if (spec->width < 0)
 		{
 			spec->flag_minus = 1;
+			spec->left_align = TRUE;
+			spec->right_align = FALSE;
 			spec->width = -spec->width;
 		}
 		return (++format);
 	}
-	if (!ft_isdigit(*format))
-		return (format);
-	w = 0;
-	while (ft_isdigit(*format))
-	{
-		w = w * 10 + *format - '0';
-		if (w > INT_MAX)
-			return (NULL);
-		format++;
-	}
-	spec->width = (int)w;
-	return (format);
+	return (str_to_int((char*)format, &spec->width));
 }
 
 const char	*set_precision(const char *format, t_spec *spec, va_list args)
 {
-	long long	p;
-
 	spec->precision = -1;
 	if (*format != '.')
 		return (format);
@@ -82,16 +89,8 @@ const char	*set_precision(const char *format, t_spec *spec, va_list args)
 			spec->precision = -1;
 		return (++format);
 	}
-	p = 0;
-	while (ft_isdigit(*format))
-	{
-		p = p * 10 + *format - '0';
-		if (p > INT_MAX)
-			return (NULL);
-		format++;
-	}
-	spec->precision = (int)p;
-	return (format);
+	spec->precision = 0;
+	return (str_to_int((char*)format, &spec->precision));
 }
 
 const char	*set_length(const char *format, t_spec *spec)
@@ -111,18 +110,4 @@ const char	*set_length(const char *format, t_spec *spec)
 			spec->length[1] = *format++;
 	}
 	return (format);
-}
-
-const char	*set_conversion(const char *format, t_spec *spec)
-{
-	char	*conversion;
-
-	spec->conversion = 0;
-	if (!*format)
-		return (format);
-	conversion = ft_strchr("cspdiuxX%f", *format);
-	if (!conversion)
-		return (format);
-	spec->conversion = *format;
-	return (++format);
 }

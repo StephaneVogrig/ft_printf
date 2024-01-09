@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:27:57 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 15:12:14 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:42:42 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -15,7 +15,8 @@
 void	tests_field_width(void)
 {
 	printf("\n");
-	printf("tests field width\n--------------------------\n");
+	printf("tests field width\n");
+	printf("--------------------------\n");
 	printf(" | %i (ft_printf)\n", ft_printf("%%i, int max = %i", INT_MAX));
 	printf(" | %i            \n",    printf("%%i, int max = %i", INT_MAX));
 	printf("\n");

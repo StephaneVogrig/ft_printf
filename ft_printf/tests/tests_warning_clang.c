@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:43:14 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 14:44:00 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:46:09 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,8 @@
 
 void	tests_warning_clang()
 {
-	printf("tests warning\n--------------------------\n");
+	printf("tests warning\n");
+	printf("--------------------------\n");
 
 
 	printf("--------------------------\n");

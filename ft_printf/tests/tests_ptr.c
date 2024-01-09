@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:41:10 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 14:40:30 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:44:24 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,7 +20,8 @@ void	tests_ptr()
 
 	str_null =  NULL;
 	printf("\n");
-	printf("test ptr\n--------------------------\n");
+	printf("test ptr\n");
+	printf("--------------------------\n");
 	result = ft_printf("ptr null = %p", str_null);
 	printf(" | %i\n", result);
 	result = printf("ptr null = %p", str_null);

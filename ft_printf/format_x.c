@@ -6,13 +6,13 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 20:52:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 04:05:50 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/05 20:40:29 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-int	format_x(unsigned long long nbr, t_spec *spec, t_buffer *buffer)
+int	format_x(t_ui64 nbr, t_spec *spec, t_buffer *buffer)
 {
 	char				str[MAX_DIGIT_HEXA];
 	t_nbrstr			nbrstr;

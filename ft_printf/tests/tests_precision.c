@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:51:38 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 15:23:13 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:44:19 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -15,7 +15,8 @@
 void tests_precision(void)
 {
 	printf("\n");
-	printf("test precision\n--------------------------\n");
+	printf("test precision\n");
+	printf("--------------------------\n");
 	printf(" | %i (ft_printf)\n", ft_printf("%.6i , 0 = ", 0));
 	printf(" | %i            \n",    printf("%.6i , 0 = ", 0));
 	printf("\n");

@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:03:59 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 15:38:27 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:44:14 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,8 @@
 
 void	tests_precision_etoile(void)
 {
-	printf("test precision *\n--------------------------\n");
+	printf("test precision *\n");
+	printf("--------------------------\n");
 	printf(" | %i (ft_printf)\n", ft_printf("%%.*i , 0, 42 = %.*i", 0, 42));
 	printf(" | %i            \n",    printf("%%.*i , 0, 42 = %.*i", 0, 42));
 	printf("\n");

@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:53:54 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 14:48:56 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:42:48 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,7 +18,8 @@ void	tests_flags(void)
 	unsigned int 	ui = 42;
 	
 	printf("\n");
-	printf("test flags\n--------------------------\n");
+	printf("test flags\n");
+	printf("--------------------------\n");
 	result = ft_printf("unsigned int 42 = %u", ui);
 	printf(" | %i\n", result);
 	result = printf("unsigned int 42 = %u", ui);

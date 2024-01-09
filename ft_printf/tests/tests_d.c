@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:43:51 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/02 16:34:58 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:42:05 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -17,7 +17,8 @@ void	tests_d(void)
 	int	result = 0;
 
 	printf("\n");
-	printf("test d\n--------------------------\n");
+	printf("test d\n");
+	printf("--------------------------\n");
 	result = ft_printf("print %%d 2147483647 = %d", INT_MAX);
 	printf(" | %i\n", result);
 	result = printf("print %%d 2147483647 = %d", INT_MAX);

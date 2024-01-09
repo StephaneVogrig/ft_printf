@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:40:09 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 07:20:45 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/05 18:03:30 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,40 +14,98 @@
 
 void	tests_str()
 {
-	int	result;
-	char str[10] = {0,0,0,0,0,0,0,0,0,0};
 	char *str_null;
-	char *str2;
-
+	
+	printf("\n");
+	printf("test string\n");
+	printf("--------------------------\n");
+	
+	printf(" | %i (ft_printf)\n", ft_printf("%%s, \"\" = \"%s\"", ""));
+	printf(" | %i            \n",    printf("%%s, \"\" = \"%s\"", ""));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%.s, \"\" = \"%.s\"", ""));
+	printf(" | %i            \n",    printf("%%.s, \"\" = \"%.s\"", ""));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%.3s, \"\" = \"%.3s\"", ""));
+	printf(" | %i            \n",    printf("%%.3s, \"\" = \"%.3s\"", ""));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%s, \"\" = \"%10s\"", ""));
+	printf(" | %i            \n",    printf("%%s, \"\" = \"%10s\"", ""));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%s, \"ecole42\" = \"%s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%s, \"ecole42\" = \"%s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%.s, \"ecole42\" = \"%.s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%.s, \"ecole42\" = \"%.s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%.3s, \"ecole42\" = \"%.3s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%.3s, \"ecole42\" = \"%.3s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%.6s, \"ecole42\" = \"%.6s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%.6s, \"ecole42\" = \"%.6s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%.9s, \"ecole42\" = \"%.9s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%.9s, \"ecole42\" = \"%.9s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%10s, \"ecole42\" = \"%10s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%10s, \"ecole42\" = \"%10s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%10.s, \"ecole42\" = \"%10.s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%10.s, \"ecole42\" = \"%10.s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%10.3s, \"ecole42\" = \"%10.3s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%10.3s, \"ecole42\" = \"%10.3s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%10.6s, \"ecole42\" = \"%10.6s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%10.6s, \"ecole42\" = \"%10.6s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%10.9s, \"ecole42\" = \"%10.9s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%10.9s, \"ecole42\" = \"%10.9s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%-10s, \"ecole42\" = \"%-10s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%-10s, \"ecole42\" = \"%-10s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%-10.s, \"ecole42\" = \"%-10.s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%-10.s, \"ecole42\" = \"%-10.s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%-10.3s, \"ecole42\" = \"%-10.3s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%-10.3s, \"ecole42\" = \"%-10.3s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%-10.6s, \"ecole42\" = \"%-10.6s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%-10.6s, \"ecole42\" = \"%-10.6s\"", "ecole42"));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%-10.9s, \"ecole42\" = \"%-10.9s\"", "ecole42"));
+	printf(" | %i            \n",    printf("%%-10.9s, \"ecole42\" = \"%-10.9s\"", "ecole42"));
+	printf("\n");
+	
 	str_null =  NULL;
 	printf("\n");
-	printf("test string\n--------------------------\n");
-	printf(" | %i\n", ft_printf("chaine vide = \"%s\"", str));
-	printf(" | %i\n", printf("chaine vide = \"%s\"", str));
+	printf(" | %i (ft_printf)\n", ft_printf("%% = \"%s\"", str_null));
+	printf(" | %i            \n",    printf("%% = \"%s\"", str_null));
 	printf("\n");
-	str[0] = 'a'; str[1] = 'b';
-	result = ft_printf("\"ab\" = \"%s\"", str);
-	printf(" | %i\n", result);
-	result = printf("\"ab\" = \"%s\"", str);
-	printf(" | %i\n", result);
+	printf(" | %i (ft_printf)\n", ft_printf("%%.0s, null = \"%.0s\"", str_null));
+	printf(" | %i            \n",    printf("%%.0s, null = \"%.0s\"", str_null));
 	printf("\n");
-	printf(" | %i\n", ft_printf("chaine null = \"%s\"", str_null));
-	printf(" | %i\n", printf("chaine null = \"%s\"", str_null));
+	printf(" | %i (ft_printf)\n", ft_printf("%%.3s, null = \"%.3s\"", str_null));
+	printf(" | %i            \n",    printf("%%.3s, null = \"%.3s\"", str_null));
 	printf("\n");
-	printf(" | %i\n", ft_printf("chaine null = \"%10.7s\"", str_null));
-	printf(" | %i\n", printf("chaine null = \"%10.7s\"", str_null));
+	printf(" | %i (ft_printf)\n", ft_printf("%%.6s, null = \"%.6s\"", str_null));
+	printf(" | %i            \n",    printf("%%.6s, null = \"%.6s\"", str_null));
 	printf("\n");
-	printf(" | %i\n", ft_printf("%%.0s, null = \"%.0s\"", str_null));
-	printf(" | %i\n", printf("%%.0s, null = \"%.0s\"", str_null));
+	printf(" | %i (ft_printf)\n", ft_printf("%%.9s, null = \"%.9s\"", str_null));
+	printf(" | %i            \n",    printf("%%.9s, null = \"%.9s\"", str_null));
 	printf("\n");
-	str2 = "ma chaine";
-	result = ft_printf("chaine null = \"%10.6s\"", str_null);
-	printf(" | %i\n", result);
-	result = printf("chaine null = \"%10.6s\"", str_null);
-	printf(" | %i\n", result);
+	printf(" | %i (ft_printf)\n", ft_printf("%%10.0s, null = \"%10.0s\"", str_null));
+	printf(" | %i            \n",    printf("%%10.0s, null = \"%10.0s\"", str_null));
 	printf("\n");
-	str2 = "ma chaine";
-	printf(" | %i\n", ft_printf("chaine null = \"%10.1s\"", str2));
-	printf(" | %i\n", printf("chaine null = \"%10.1s\"", str2));
+	printf(" | %i (ft_printf)\n", ft_printf("%%10.3s, null = \"%10.3s\"", str_null));
+	printf(" | %i            \n",    printf("%%10.3s, null = \"%10.3s\"", str_null));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%10.6s, null = \"%10.6s\"", str_null));
+	printf(" | %i            \n",    printf("%%10.6s, null = \"%10.6s\"", str_null));
+	printf("\n");
+	printf(" | %i (ft_printf)\n", ft_printf("%%10.9s, null = \"%10.9s\"", str_null));
+	printf(" | %i            \n",    printf("%%10.9s, null = \"%10.9s\"", str_null));
+
 	printf("--------------------------\n");
 }

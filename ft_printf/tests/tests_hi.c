@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:28:51 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 15:13:23 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:42:52 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,8 @@
 
 void	tests_hi(void)
 {
-	printf("tests hi\n--------------------------\n");
+	printf("tests hi\n");
+	printf("--------------------------\n");
 	printf(" | %i (ft_printf)\n", ft_printf("%hd", (short)42));
 	printf(" | %i            \n",    printf("%hd", (short)42));
 	printf("\n");

@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 02:27:59 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 15:21:18 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:46:17 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,8 @@
 
 void	tests_warning()
 {
-	printf("tests warning\n--------------------------\n");
+	printf("tests warning\n");
+	printf("--------------------------\n");
 	// printf(" | %i (ft_printf)\n", ft_printf("%%+10u, 42 = %+10u", 42));
 	// printf(" | %i\n", printf("%%+10u, 42 = %+10u", 42));
 	// printf("\n");

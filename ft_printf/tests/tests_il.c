@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:58:17 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/02 17:40:52 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:43:01 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -15,7 +15,8 @@
 void tests_il(void)
 {
 	printf("\n");
-	printf("test long int\n--------------------------\n");
+	printf("test long int\n");
+	printf("--------------------------\n");
 	printf(" | %i (ft_printf)\n", ft_printf("%%li, LONG_MAX = %li", LONG_MAX));
 	printf(" | %i\n", printf("%%li, LONG_MAX = %li", LONG_MAX));
 	printf("\n");

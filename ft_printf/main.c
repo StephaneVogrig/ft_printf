@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:03:12 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 15:59:27 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/06 05:27:05 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,15 +34,17 @@ void	tests_ull(void);
 void	tests_warning(void);
 void	tests_x(void);
 void	tests_X(void);
+void	tests_spec_without_conversion(void);
+void	double_to_float64_tests(void);
+
+#include "essais.c"
 
 int	main(void)
 {
-	// printf("%010i\n", 42);
-	// ft_printf("%u\n", 10);
 	// tests_char();
 	// tests_d();
 	// tests_field_width();
-	tests_field_width_etoile();
+	// tests_field_width_etoile();
 	// tests_flags();
 	// tests_hi();
 	// tests_i();
@@ -59,16 +61,15 @@ int	main(void)
 	// tests_warning();
 	// tests_x();
 	// tests_X();
-	// tests_f();
+	tests_f();
+	// tests_spec_without_conversion();
+	// double_to_float64_tests();
 
 	// printf(" | %i\n", printf("k%"));
 	// printf(" | %i\n", printf("%k%"));
 	// printf("Fait planter printf : %*.*d\n", INT_MIN, 10 , 10);
 	// printf("Fait pas planter printf : %*.*d\n", 10, INT_MIN , 10);
 
-	// printf("sizeof(float) = %lu\n", sizeof(float));
-	// printf("sizeof(double) = %lu\n", sizeof(double));
-	// printf("sizeof(long double) = %lu\n", sizeof(long double));
 	// float f = 32e32;
 	// double	d = 32e32;
 	// long double	ld = 32e32;

@@ -6,13 +6,13 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:32:12 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 04:19:56 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/05 20:43:31 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-char	*ull_to_str_dec(char *str, unsigned long long n)
+char	*ull_to_str_dec(char *str, t_ui64 n)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ char	*ull_to_str_dec(char *str, unsigned long long n)
 	return (&str[i]);
 }
 
-char	*ull_to_str_hexaupper(char *str, unsigned long long n)
+char	*ull_to_str_hexaupper(char *str, t_ui64 n)
 {
 	int		i;
 
@@ -40,7 +40,7 @@ char	*ull_to_str_hexaupper(char *str, unsigned long long n)
 	return (&str[i]);
 }
 
-char	*ull_to_str_hexalower(char *str, unsigned long long n)
+char	*ull_to_str_hexalower(char *str, t_ui64 n)
 {
 	int		i;
 

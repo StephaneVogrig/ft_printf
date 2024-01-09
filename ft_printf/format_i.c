@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:01:11 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 06:11:36 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/08 23:07:27 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -37,7 +37,7 @@ static int	format_i_neg(long long nbr, t_spec *spec, t_buffer *buffer)
 	return (1);
 }
 
-static int	format_i_pos(long long nbr, t_spec *spec, t_buffer *buffer)
+static int	format_i_pos(t_ui64 nbr, t_spec *spec, t_buffer *buffer)
 {
 	char		str[LEN_MAXLONGLONG];
 	t_nbrstr	nbrstr;
@@ -55,7 +55,7 @@ static int	format_i_pos(long long nbr, t_spec *spec, t_buffer *buffer)
 	return (1);
 }
 
-int	format_i(long long nbr, t_spec *spec, t_buffer *buffer)
+int	format_i(t_int64 nbr, t_spec *spec, t_buffer *buffer)
 {
 	if (nbr == LLONG_MIN)
 		return(format_i_min(spec, buffer));

@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:11:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 06:36:17 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:54:14 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -58,7 +58,7 @@ t_float64	float64_get_decimal_part(t_float64 nbr)
 	uf.exponent_biais -= exp;
 	uf.mantissa <<= exp;
 	uf.f -= 1;
-	return (nbr);
+	return (uf.f);
 }
 
 t_float64	float64_get_integer_part(t_float64 nbr)

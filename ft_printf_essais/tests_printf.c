@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   tests_printf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:56:48 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/17 20:10:41 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/06 17:54:10 by stephane         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include <stdio.h>
 #include <limits.h>
@@ -24,13 +24,6 @@ void	stud_d(void)
 	
 	printf("printf(%%d, n)   = \""); printf ("\" : %i\n", printf("%d", n));
 	printf("printf(%%d, n)   = \""); printf ("\" : %i\n", printf("%li", n));
-	printf("sizeof char: %i\n",sizeof(char));
-	printf("sizeof int: %i\n",sizeof(int));
-	printf("sizeof long: %i\n",sizeof(long));
-	printf("sizeof long long: %i\n",sizeof(long long));
-	printf("sizeof double: %i\n",sizeof(double));
-	printf("sizeof float: %i\n",sizeof(float));
-	printf("sizeof char*: %i\n",sizeof(char*));
 	
 }*/
 

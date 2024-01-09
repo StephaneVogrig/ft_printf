@@ -6,19 +6,17 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:11:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 11:54:14 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:29:04 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "float.h"
-#include <stdio.h>
 
 int	float64_get_sign(t_float64 nbr)
 {
 	t_u_float64	uf;
 
 	uf.f = nbr;
-	
 	if (uf.sign)
 		return (-1);
 	return (1);	
@@ -67,9 +65,6 @@ t_float64	float64_get_integer_part(t_float64 nbr)
 	t_u_float64	uf;
 
 	exp = float64_get_exponent(nbr);
-	
-// printf("nbr %f, exposant %i\n", nbr, exp);
-// print_float64_to_binary(nbr, '\n');
 	if (exp < 0)
 		return (0.0);
 	if (exp == 0)
@@ -79,6 +74,5 @@ t_float64	float64_get_integer_part(t_float64 nbr)
 	uf.f = nbr;
 	uf.mantissa >>= 51 - exp;
 	uf.mantissa <<= 51 - exp;
-// print_float64_to_binary(uf.f, '\n');
 	return (nbr);	
 }

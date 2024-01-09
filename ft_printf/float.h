@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:13:52 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 14:28:58 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:39:06 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,7 +18,6 @@
 # define POSITIVE 1
 # define NEGATIVE -1
 # define FLOAT_MAX_EXPONENT 1024
-
 
 typedef	float 		t_float32;
 typedef double		t_float64;
@@ -46,7 +45,7 @@ t_float64	float64_set_sign(t_float64 f, int sign);
 t_float64	float64_set_exponent(t_float64 f, int exponent);
 t_float64	float64_set_mantissa(t_float64 f, t_ui64 mantissa);
 
-/* float64_set --------------------------------------------------------------*/
+/* float64_print --------------------------------------------------------------*/
 void	print_float64_to_binary(t_float64 nbr, char c);
 
 #endif

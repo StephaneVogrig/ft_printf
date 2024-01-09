@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:23:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 06:14:07 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:08:40 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -29,9 +29,6 @@ void	float_get_integer_part_tests(void)
 	
 	test.success = 0;
 	test.nbr = 0;
-
-	
-	
 	print_test(0.0, 0.0, float64_get_integer_part(0.0), &test);
 	print_test(0.25, 0.0, float64_get_integer_part(0.25), &test);
 	print_test(-42.42, 1.0, float64_get_integer_part(-42.42), &test);

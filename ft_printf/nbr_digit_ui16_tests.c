@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:18:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/07 04:47:41 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:38:04 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -28,7 +28,7 @@ void	nbr_digit_ui16_tests(void)
 	t_ui16	n;
 	t_ui16	m;
 	t_test	test;
-	
+
 	test.success = 0;
 	test.nbr = 0;
 	print_test(0, 1, nbr_digit_ui16(0), &test);

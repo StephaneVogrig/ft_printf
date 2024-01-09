@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:34:56 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 14:55:38 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:59:17 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,7 +31,6 @@ void	tests_f(void)
 	printf(" | %i (ft_printf)\n", ft_printf("%%f Lydie == |%f|", (double)'L'+'y'+'d'+'i'+'e'));
 	printf(" | %i            \n",    printf("%%f Lydie == |%f|", (double)'L'+'y'+'d'+'i'+'e'));
 	printf("\n");
-	
 	printf(" | %i (ft_printf)\n", ft_printf("%%.10f, 0.9999999999 = %.10f", 0.9999999999));
 	printf(" | %i            \n",    printf("%%.10f, 0.9999999999 = %.10f", 0.9999999999));
 	printf("\n");

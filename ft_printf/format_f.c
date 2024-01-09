@@ -6,26 +6,21 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:26:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 14:59:22 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:28:23 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-t_round	compute_round(double n, int precision)
+t_round	compute_round(t_float128 nbr, int precision)
 {
-// printf("start compute round\n"); // debug
 	t_round	round;
 	int		digit;
 	int		i;
-	t_float128 nbr;
 
-	nbr = n;
 	round.nbr_digit = 0;
 	round.intpart = nbr >= 0.5;
 	round.decpart = 0;
-// printf("n %.40f, nbr digit round %i\n", nbr, round.nbr_digit); // debug
 	if (precision == 0)
 		return (round);
 	i = precision;
@@ -33,43 +28,37 @@ t_round	compute_round(double n, int precision)
 	{
 		nbr *= 10;
 		digit = (int)nbr;
-// printf("digit %i, nbr %.20Lf\n", digit, nbr);
 		nbr -= digit;
 		if (digit < 9)
 			round.nbr_digit = 0;
 		else
 			round.nbr_digit++;	
 	}
-// printf("i %i, n %.40f, digit %i, nbr digit round %i\n", i, nbr, digit, round.nbr_digit); // debug
 	round.decpart = nbr >= 0.5;
 	round.intpart = round.decpart && round.nbr_digit == precision;
 	if (round.decpart == 0)
 		round.nbr_digit = 0;
-// printf("round : intpart %i, decpart %i, nbr_digit %i\n", round.intpart, round.decpart, round.nbr_digit); // debug
 	return (round);
 }
 
-int	nbr_digit_intpart(double nbr)
+int	nbr_digit_integer_part(double nbr)
 {
 	int	i;
 
 	i = 1;
 	while(nbr >= 10)
 	{
-// printf("nbr %f, nbr digit int %i\n", nbr, i); // debug
 		nbr /= 10;
 		i++;
 	}
 	return (i);
 }
 
-double	integer_to_buffer(double n, int power10, t_buffer *buffer)
+double	integer_to_buffer(t_float128 nbr, int power10, t_buffer *buffer)
 {
 	int 		digit;
 	t_float128	mul;
-	t_float128	nbr;
-	
-	nbr = n;
+
 	mul = vs_pow(power10);
 	while (power10--)
 	{
@@ -86,20 +75,18 @@ double	integer_to_buffer(double n, int power10, t_buffer *buffer)
 	return (nbr);
 }
 
-void	decimal_to_buffer(double nbr, int precision, t_round round, t_buffer *buffer)
+void	decimal_to_buffer(t_float128 nbr, int precision, t_round round, t_buffer *buffer)
 {
 	int	digit;
-	t_float128 n;
-	
-	n = nbr;
+
 	precision -= round.nbr_digit;
 	while (precision--)
 	{
-		n *= 10;
-		digit = (int)n;
-		n -= digit;
+		nbr *= 10;
+		digit = (int)nbr;
+		nbr -= digit;
 		if (precision == 0)
-			buffer_add_char(buffer, digit + (n >= 0.5) + '0', 1);
+			buffer_add_char(buffer, digit + (nbr >= 0.5) + '0', 1);
 		else
 			buffer_add_char(buffer, digit + '0', 1);
 	}
@@ -107,45 +94,26 @@ void	decimal_to_buffer(double nbr, int precision, t_round round, t_buffer *buffe
 		buffer_add_char(buffer, '0', round.nbr_digit);
 }
 
-
-void	dot_to_buffer(t_spec *spec, t_buffer *buffer)
-{
-	if (spec->precision > 0 || spec->flag_hash)
-		buffer_add_char(buffer, '.', 1);
-}
-
 void	double_to_buffer(t_float64 nbr, t_spec *spec, t_buffer *buffer)
 {
-	// printf("start double to buffer\n"); // debug
-	
-// printf("nbr     %.30f\n", nbr); // debug
 	int			nbr_digit_int;
 	t_round		round;
 	t_float64	decimal;
-	
-	nbr_digit_int = nbr_digit_intpart(nbr);
-// printf("nbr_digit_int %i\n", nbr_digit_int); // debug
-	decimal = float64_get_decimal_part(nbr);
-// printf("decimal %.30f\n", decimal); // debug
-	round = compute_round(decimal, spec->precision);
-// printf("round : intpart %i, decpart %i, nbr_digit %i\n", round.intpart, round.decpart, round.nbr_digit); // debug
 
+	nbr_digit_int = nbr_digit_integer_part(nbr);
+	decimal = float64_get_decimal_part(nbr);
+	round = compute_round(decimal, spec->precision);
 	field_compute_empty_float(spec, nbr_digit_int);
 	field_empty_before_to_buffer(spec, buffer);
-// printf("nbr_digit_int %i\n", nbr_digit_int); // debug
 	integer_to_buffer(nbr + round.intpart, nbr_digit_int - 1, buffer);
-// printf("nbr %.30f, dec part %.30f, nbr digit int %i\n", nbr, decimal, nbr_digit_int); // debug
-
-	dot_to_buffer(spec, buffer);
-	// printf("f %f\n", n.f);
+	if (spec->precision > 0 || spec->flag_hash)
+		buffer_add_char(buffer, '.', 1);
 	decimal_to_buffer(decimal, spec->precision, round, buffer);
 	field_empty_after_to_buffer(spec, buffer);
 }
 
 int	format_f(t_float64 nbr, t_spec *spec, t_buffer *buffer)
 {
-	// printf("start format_f\n"); // debug
-	// printf("n = %f\n", nbr); // debug
 	if (float64_get_sign(nbr) == NEGATIVE)
 	{
 		spec->prefix = '-';
@@ -162,4 +130,3 @@ int	format_f(t_float64 nbr, t_spec *spec, t_buffer *buffer)
 	double_to_buffer(nbr, spec, buffer);
 	return (1);	
 }
-

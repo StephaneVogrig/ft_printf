@@ -6,14 +6,14 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 05:03:45 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 05:53:49 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:23:41 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include <unistd.h>
 #include "float.h"
 
-void	print_float64_to_binary(t_ui64 nbr, char c)
+void	print_float64_to_binary(t_float64 nbr, char c)
 {
 	int			i;
 	int			j;

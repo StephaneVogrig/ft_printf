@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:13:52 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 05:10:05 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:28:58 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -47,6 +47,6 @@ t_float64	float64_set_exponent(t_float64 f, int exponent);
 t_float64	float64_set_mantissa(t_float64 f, t_ui64 mantissa);
 
 /* float64_set --------------------------------------------------------------*/
-void	print_float64_to_binary(t_ui64 nbr, char c);
+void	print_float64_to_binary(t_float64 nbr, char c);
 
 #endif

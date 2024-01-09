@@ -6,20 +6,22 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:26:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 11:56:36 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:59:22 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-t_round	compute_round(double nbr, int precision)
+t_round	compute_round(double n, int precision)
 {
 // printf("start compute round\n"); // debug
 	t_round	round;
 	int		digit;
 	int		i;
+	t_float128 nbr;
 
+	nbr = n;
 	round.nbr_digit = 0;
 	round.intpart = nbr >= 0.5;
 	round.decpart = 0;
@@ -31,6 +33,7 @@ t_round	compute_round(double nbr, int precision)
 	{
 		nbr *= 10;
 		digit = (int)nbr;
+// printf("digit %i, nbr %.20Lf\n", digit, nbr);
 		nbr -= digit;
 		if (digit < 9)
 			round.nbr_digit = 0;
@@ -60,39 +63,21 @@ int	nbr_digit_intpart(double nbr)
 	return (i);
 }
 
-// printf("10ex      %i%100.30Lf\n",++i, pow); // debug
-// printf("nbr       %100.30Lf\n", nbr); // debug
-// printf("ten power %100.30Lf\n", mul); // buffer
-// // printf("digit     %69i\n", digit); // debug
-// // printf("di * pow  %100.30Lf\n", nbr); // debug
-// // printf("nbr       %100.30Lf\n", nbr); // debug
-// printf("ten power %100.30Lf\n", mul); // buffer
-
-// printf("10e20 %100.30Lf\n", 10e20L); // buffer
-// printf("10e40 %100.30Lf\n", 10e40L); // buffer
-// printf("10e40* %100.30Lf\n", 10e20L * 10e20L); // buffer
-// printf("\n"); // debug
 double	integer_to_buffer(double n, int power10, t_buffer *buffer)
 {
-	// printf("start integer to buffer\n"); // debug
-// printf("nbr    %f, power10 %i\n", nbr, power10); // debug
 	int 		digit;
 	t_float128	mul;
 	t_float128	nbr;
-	// t_float128	out;
-
+	
 	nbr = n;
 	mul = vs_pow(power10);
-	// out = 0;
-// printf("mul %Lf, nbr >= 10 = %i, result = %Lf\n", mul, nbr >= 10, vs_pow(power10)); // debug
-	while (nbr >= 10)
+	while (power10--)
 	{
-
-
 		digit =(int)(nbr / mul);
 		buffer_add_char(buffer, digit + '0', 1);
 		nbr -= (digit * mul);
-		
+		if (power10 == 21)
+			mul = 10e21L;
 		mul /= 10;
 	}
 	digit = nbr;
@@ -103,7 +88,6 @@ double	integer_to_buffer(double n, int power10, t_buffer *buffer)
 
 void	decimal_to_buffer(double nbr, int precision, t_round round, t_buffer *buffer)
 {
-	// printf("start decimal to buffer\n"); // debug
 	int	digit;
 	t_float128 n;
 	
@@ -111,8 +95,6 @@ void	decimal_to_buffer(double nbr, int precision, t_round round, t_buffer *buffe
 	precision -= round.nbr_digit;
 	while (precision--)
 	{
-	// printf("nbr:%.30Lf, precision %i, nbr digit round %i\n", n, precision, round.nbr_digit); // debug
-	// printf("nbr:%.30f\n", (n * 10) / 10); // debug
 		n *= 10;
 		digit = (int)n;
 		n -= digit;
@@ -146,10 +128,12 @@ void	double_to_buffer(t_float64 nbr, t_spec *spec, t_buffer *buffer)
 	decimal = float64_get_decimal_part(nbr);
 // printf("decimal %.30f\n", decimal); // debug
 	round = compute_round(decimal, spec->precision);
+// printf("round : intpart %i, decpart %i, nbr_digit %i\n", round.intpart, round.decpart, round.nbr_digit); // debug
+
 	field_compute_empty_float(spec, nbr_digit_int);
 	field_empty_before_to_buffer(spec, buffer);
 // printf("nbr_digit_int %i\n", nbr_digit_int); // debug
-	decimal = integer_to_buffer(nbr + round.intpart, nbr_digit_int - 1, buffer);
+	integer_to_buffer(nbr + round.intpart, nbr_digit_int - 1, buffer);
 // printf("nbr %.30f, dec part %.30f, nbr digit int %i\n", nbr, decimal, nbr_digit_int); // debug
 
 	dot_to_buffer(spec, buffer);

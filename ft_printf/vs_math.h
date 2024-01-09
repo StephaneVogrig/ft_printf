@@ -1,24 +1,20 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nbr_digit_unit_test.h                              :+:      :+:    :+:   */
+/*   vs_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 23:32:00 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 17:51:35 by stephane         ###   ########.fr       */
+/*   Created: 2024/01/09 18:31:35 by stephane          #+#    #+#             */
+/*   Updated: 2024/01/09 18:37:37 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef LEN_B_10_UNIT_TEST_H
-# define LEN_B_10_UNIT_TEST_H
+#ifndef VS_MATH_H
+# define VS_MATH_H
 
-# include "unit_test.h"
-# include "nbr_digit.h"
+#include "vs_type.h"
 
-void	nbr_digit_ui8_tests(void);
-void	nbr_digit_ui16_tests(void);
-void	nbr_digit_ui32_tests(void);
-void	nbr_digit_ui64_tests(void);
+t_float128	vs_10pow(int p);
 
 #endif

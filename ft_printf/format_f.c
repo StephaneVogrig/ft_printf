@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:26:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 17:25:35 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 23:27:39 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -46,7 +46,7 @@ double	integer_to_buffer(t_float128 nbr, int power10, t_buffer *buffer)
 	int 		digit;
 	t_float128	mul;
 
-	mul = vs_pow(power10);
+	mul = vs_10pow(power10);
 	while (power10--)
 	{
 		digit =(int)(nbr / mul);

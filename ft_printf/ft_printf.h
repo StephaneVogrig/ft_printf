@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/09 17:30:07 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 23:27:49 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -44,7 +44,6 @@ typedef struct s_spec {
 	int		width;
 	int		precision;
 	char	length[2];
-	
 }	t_spec;
 
 typedef struct s_nbrstr {
@@ -107,7 +106,7 @@ char		*ui64_to_str_hexalower(char *str, t_ui64 n);
 char		*ui64_to_str_hexaupper(char *str, t_ui64 n);
 
 /* math ----------------------------------------------------------------------*/
-t_float128	vs_pow(int p);
+t_float128	vs_10pow(int p);
 
 /* ft utils ------------------------------------------------------------------*/
 int			ft_isdigit(int c);

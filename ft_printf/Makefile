@@ -6,7 +6,7 @@
 #    By: stephane <stephane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2024/01/09 17:29:15 by stephane         ###   ########.fr        #
+#    Updated: 2024/01/09 18:38:24 by stephane         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -37,7 +37,7 @@ SRCS 		:=	ft_printf.c \
 				float64_set.c \
 				float64_get.c \
 				float_print.c \
-				math.c \
+				vs_math.c \
 				ft_utils.c
 
 SRCS		:=	$(SRCS:%=$(SRC_DIR)/%)

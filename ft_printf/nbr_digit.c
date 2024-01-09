@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 15:50:33 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 17:30:24 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/09 23:24:47 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -92,15 +92,15 @@ int	nbr_digit_ui64(t_ui64 n)
 	return (20);
 }
 
-int	nbr_digit_float64_integer_part(t_float64 n)
+int	nbr_digit_float64_integer_part(t_float128 n)
 {
-	int	i;
-
-	i = 1;
-	while(n >= 10)
+	int	nbr_digit;
+	
+	nbr_digit = 0;
+	while (n >= 1e19L)
 	{
-		n /= 10;
-		i++;
+		n /= 1e19L;
+		nbr_digit += 19;
 	}
-	return (i);
+	return (nbr_digit + nbr_digit_ui64(n));
 }

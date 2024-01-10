@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 20:52:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 17:09:25 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:11:21 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -23,7 +23,7 @@ int	format_x(t_ui64 nbr, t_spec *spec, t_buffer *buffer)
 	if (spec->flag_hash && nbr > 0)
 		spec->prefix = 'x';
 	else
-		spec->prefix = 0;
+		spec->prefix = '\0';
 	nbrstr_to_buffer(buffer, spec, &nbrstr);
 	return (1);
 }

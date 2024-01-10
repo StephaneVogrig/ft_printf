@@ -6,12 +6,14 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 04:54:23 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 16:47:40 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:28:29 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
+// if flag hash is present, the result alwys contain a decimal point,
+// even if no digit follow.
 void	field_compute_empty_float(t_spec *spec, int nbr_digit_int)
 {
 	if (spec->prefix)
@@ -30,7 +32,7 @@ void	field_compute_empty_integer(t_spec *spec, int nbr_digit_int)
 	spec->width -= nbr_digit_int + spec->precision;
 	if (spec->prefix == 'x' || spec->prefix == 'X')
 		spec->width -= 2;
-	if (spec->prefix == '+' || spec->prefix == '-' || spec->prefix == ' ')
+	else if (spec->prefix != '\0')
 		spec->width -= 1;
 	if (spec->width < 0)
 		spec->width = 0;	

@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 00:20:55 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:57:05 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -33,13 +33,18 @@ typedef struct buffer{
 }	t_buffer;
 
 typedef struct s_spec {
-	char	flag_hash;
-	char	flag_zero;
-	char	flag_minus;
-	char	flag_space;
-	char	flag_plus;
-	char	right_align;
-	char	left_align;
+	union {
+		t_ui8	flags;
+		struct {
+			t_ui8 flag_hash : 1;
+			t_ui8 flag_zero	: 1;
+			t_ui8 flag_minus : 1;
+			t_ui8 flag_space : 1;
+			t_ui8 flag_plus : 1;
+			t_ui8 right_align : 1;
+			t_ui8 left_align : 1;
+		};
+	};
 	char	prefix;
 	int		width;
 	int		precision;

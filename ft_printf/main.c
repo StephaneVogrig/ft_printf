@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:03:12 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/09 23:39:19 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:46:45 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -44,7 +44,7 @@ int	main(void)
 {
 	// tests_char();
 	// tests_d();
-	// tests_field_width();
+	tests_field_width();
 	// tests_field_width_etoile();
 	tests_flags();
 	// tests_hi();

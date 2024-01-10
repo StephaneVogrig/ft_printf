@@ -6,30 +6,25 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 00:29:25 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:37:12 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-void	set_complements(t_spec *spec)
+void	set_prefix(t_spec *spec)
 {
-	spec->left_align = (spec->flag_minus == 1);
-	spec->right_align = (spec->flag_minus == 0);
-	spec->prefix = 0;
-	if (spec->flag_space)
-		spec->prefix = ' ';
-	if (spec->flag_plus)
+	if (spec->flag_plus)	
 		spec->prefix = '+';
+	else if (spec->flag_space)	
+		spec->prefix = ' ';
+	else
+		spec->prefix = '\0';
 }
 
 const char	*set_flags(const char *format, t_spec *spec)
 {
-	spec->flag_hash = FALSE;
-	spec->flag_zero = FALSE;
-	spec->flag_minus = FALSE;
-	spec->flag_space = FALSE;
-	spec->flag_plus = FALSE;
+	spec->flags = FALSE;
 	while (*format)
 	{
 		if (*format == '#')
@@ -46,7 +41,9 @@ const char	*set_flags(const char *format, t_spec *spec)
 			break;
 		format++;
 	}
-	set_complements(spec);
+	spec->left_align = (spec->flag_minus == 1);
+	spec->right_align = (spec->flag_minus == 0);
+	set_prefix(spec);
 	return (format);
 }
 

@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 12:57:05 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:52:05 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -74,7 +74,7 @@ const char	*set_flags(const char *format, t_spec *spec);
 const char	*set_widthfield(const char *format, t_spec *spec, va_list args);
 const char	*set_precision(const char *format, t_spec *spec, va_list args);
 const char	*set_length(const char *format, t_spec *spec);
-const char	*set_conversion(const char *format, t_spec *spec);
+void		set_prefix(t_spec *spec);
 
 /* nbrstr_to_buffer ----------------------------------------------------------*/
 void		nbrstr_to_buffer(t_buffer *buffer, t_spec *spec, t_nbrstr *ns);

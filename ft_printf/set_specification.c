@@ -6,13 +6,14 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 13:37:12 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:46:38 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-void	set_prefix(t_spec *spec)
+// set prefix only based on flags '+' and '-'
+inline void	set_prefix(t_spec *spec)
 {
 	if (spec->flag_plus)	
 		spec->prefix = '+';

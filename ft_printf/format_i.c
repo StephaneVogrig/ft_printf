@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:01:11 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 13:09:10 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:47:59 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -45,12 +45,7 @@ static int	format_i_positive(t_ui64 nbr, t_spec *spec, t_buffer *buffer)
 	nbrstr.is_zero = nbr == 0;
 	nbrstr.str = ui64_to_str_dec(str, nbr);
 	nbrstr.nbr_digit = str + LEN_MAXLONGLONG - nbrstr.str;
-	if (spec->flag_plus)	
-		spec->prefix = '+';
-	else if (spec->flag_space)	
-		spec->prefix = ' ';
-	else
-		spec->prefix = '\0';
+	set_prefix(spec);
 	nbrstr_to_buffer(buffer, spec, &nbrstr);
 	return (1);
 }

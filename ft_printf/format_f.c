@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:26:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 23:27:39 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:54:41 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -41,7 +41,7 @@ t_round	compute_round(t_float128 nbr, int precision)
 	return (round);
 }
 
-double	integer_to_buffer(t_float128 nbr, int power10, t_buffer *buffer)
+t_float64	integer_to_buffer(t_float128 nbr, int power10, t_buffer *buffer)
 {
 	int 		digit;
 	t_float128	mul;

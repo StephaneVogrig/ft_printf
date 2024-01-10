@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/09 23:27:49 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:20:55 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -110,7 +110,6 @@ t_float128	vs_10pow(int p);
 
 /* ft utils ------------------------------------------------------------------*/
 int			ft_isdigit(int c);
-char		*ft_strchr(const char *s, int c);
 size_t		ft_strlen(const char *s);
 char		*str_to_int(char *format, int *nbr);
 

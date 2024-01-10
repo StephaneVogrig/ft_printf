@@ -6,15 +6,11 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:34:56 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 15:59:17 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:46:16 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "tests.h"
-
-#define FLOAT_MAX 3.40282346e38
-#define FLOAT_MIN -3.40282346e38
-#define FLOAT_CLOSE_ZERO 1.4e-45
 
 void	tests_f(void)
 {
@@ -22,6 +18,9 @@ void	tests_f(void)
 	printf("test float\n");
 	printf("--------------------------\n");
 
+	printf(" | %i (ft_printf)\n", ft_printf("%.2000f", FLOAT64_MIN));
+	printf(" | %i            \n",    printf("%.2000f", FLOAT64_MIN));
+	printf("\n");
 	printf(" | %i (ft_printf)\n", ft_printf("Kashim a %f histoires à raconter", (double)1001));
 	printf(" | %i            \n",    printf("Kashim a %f histoires à raconter", (double)1001));
 	printf("\n");
@@ -142,11 +141,11 @@ void	tests_f(void)
 	// printf(" | %i (ft_printf)\n", ft_printf("%%f, 42e42 = %f", 42e42));
 	// printf(" | %i            \n",    printf("%%f, 42e42 = %f", 42e42));
 	// printf("\n");
-	// printf(" | %i (ft_printf)\n", ft_printf("%%.46f, FLOAT_CLOSE_ZERO = %.46f", FLOAT_CLOSE_ZERO));
-	// printf(" | %i            \n",    printf("%%.46f, FLOAT_CLOSE_ZERO = %.46f", FLOAT_CLOSE_ZERO));
+	// printf(" | %i (ft_printf)\n", ft_printf("%%.46f, FLOAT32_CLOSE_ZERO_POSITIVE = %.46f", FLOAT32_CLOSE_ZERO_POSITIVE));
+	// printf(" | %i            \n",    printf("%%.46f, FLOAT32_CLOSE_ZERO_POSITIVE = %.46f", FLOAT32_CLOSE_ZERO_POSITIVE));
 	// printf("\n");
-	// printf(" | %i (ft_printf)\n", ft_printf("%%f, FLOAT_MIN = %f", FLOAT_MIN));
-	// printf(" | %i            \n",    printf("%%f, FLOAT_MIN = %f", FLOAT_MIN));
+	// printf(" | %i (ft_printf)\n", ft_printf("%%f, FLOAT32_MIN = %f", FLOAT32_MIN));
+	// printf(" | %i            \n",    printf("%%f, FLOAT32_MIN = %f", FLOAT32_MIN));
 	// printf("\n");
 	// ft_printf("f.7, -0.000032f = %.7f\n",  -0.000032f);
 	// printf(" | %i (ft_printf)\n", ft_printf("%%f.7, -0.000032f = %.7f",  -0.000032f));

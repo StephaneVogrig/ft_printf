@@ -6,38 +6,38 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:22:30 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 17:35:33 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:59:39 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-static unsigned long long	arg_to_ull(va_list args, t_spec *spec)
+static t_ui64	arg_to_ull(va_list args, t_spec *spec)
 {
 	if (spec->length[0] == 'l')
 	{
 		if (spec->length[1] == 'l')
-			return (va_arg(args, unsigned long long));
-		return ((unsigned long long)va_arg(args, unsigned long));
+			return (va_arg(args, t_ui64));
+		return ((t_ui64)va_arg(args, unsigned long));
 	}
-	return ((unsigned long long)va_arg(args, unsigned int));
+	return ((t_ui64)va_arg(args, unsigned int));
 }
 
-static long long	arg_to_ll(va_list args, t_spec *spec)
+static t_int64	arg_to_ll(va_list args, t_spec *spec)
 {
 	int	arg;
 	if (spec->length[0] == 'l')
 	{
 		if (spec->length[1] == 'l')
-			return (va_arg(args, long long));
-		return ((long long)va_arg(args, long));
+			return (va_arg(args, t_int64));
+		return ((t_int64)va_arg(args, long));
 	}
 	arg = va_arg(args, int);
 	if (arg == INT_MIN)
 		return (INT_MIN);
 	if (arg < 0)
-		return (-(long long)(-arg));
-	return ((long long)arg);
+		return (-(t_int64)(-arg));
+	return ((t_int64)arg);
 }
 
 static int	parse_conversion(char c, va_list args, t_spec *spec, \
@@ -56,7 +56,7 @@ static int	parse_conversion(char c, va_list args, t_spec *spec, \
 	else if (c == 'u')
 		return (format_u(arg_to_ull(args, spec), spec, buffer));
 	else if (c == 'f')
-		return (format_f(va_arg(args, double), spec, buffer));
+		return (format_f(va_arg(args, t_float64), spec, buffer));
 	else if (c == 'x')
 		return (format_x(arg_to_ull(args, spec), spec, buffer));
 	else if (c == 'X')

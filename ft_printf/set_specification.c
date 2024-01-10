@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/05 22:34:56 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:29:25 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,16 +14,8 @@
 
 void	set_complements(t_spec *spec)
 {
-	if (spec->flag_minus)
-	{
-		spec->left_align = TRUE;
-		spec->right_align = FALSE;
-	}
-	else
-	{
-		spec->left_align = FALSE;
-		spec->right_align = TRUE;
-	}
+	spec->left_align = (spec->flag_minus == 1);
+	spec->right_align = (spec->flag_minus == 0);
 	spec->prefix = 0;
 	if (spec->flag_space)
 		spec->prefix = ' ';

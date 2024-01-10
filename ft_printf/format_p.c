@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 19:20:44 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/03 07:36:13 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:55:21 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -28,6 +28,6 @@ int	format_p(void *p, t_spec *spec, t_buffer *buffer)
 	if (!p)
 		return (format_p_nil(spec, buffer));
 	spec->flag_hash = '#';
-	return (format_x((unsigned long long)p, spec, buffer));
+	return (format_x((t_ui64)p, spec, buffer));
 	
 }

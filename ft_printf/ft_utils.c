@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:01:55 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/08 23:08:33 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:20:35 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -45,18 +45,5 @@ int	ft_isdigit(int c)
 	if ('0' <= c && c <= '9')
 		return (2048);
 	return (0);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (c == '\0')
-		return ((char *)s);
-	return (NULL);
 }
 

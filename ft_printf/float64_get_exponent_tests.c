@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 04:19:44 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 04:57:21 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:17:16 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,10 +14,10 @@
 
 static void	print_test(t_float64 n, int expected, int output, t_test *test)
 {
-		if (expected == output)
-			printf("n = %e : \033[32m%i\033[0m | \033[32m%i [OK]\r\033[0m", n,  expected, output);
-		else
-			printf("n = %e : \033[32m%i\033[0m | \033[31m%i [KO]\n\033[0m", n, expected, output);
+	if (expected == output)
+		printf("n = %e : \033[32m%i\033[0m | \033[32m%i [OK]\r\033[0m", n,  expected, output);
+	else
+		printf("n = %e : \033[32m%i\033[0m | \033[31m%i [KO]\n\033[0m", n, expected, output);
 	test->nbr++;
 	test->success += expected == output;
 }

@@ -6,7 +6,7 @@
 #    By: stephane <stephane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2024/01/09 18:38:24 by stephane         ###   ########.fr        #
+#    Updated: 2024/01/10 22:50:55 by stephane         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,19 +26,17 @@ SRCS 		:=	ft_printf.c \
 				format_p.c \
 				format_s.c \
 				format_x.c \
-				format_X.c \
+				format_xupper.c \
 				format_f.c \
 				field.c \
 				nbrstr_to_buffer.c \
 				parsing.c \
 				set_specification.c \
-				nbr_digit.c \
 				ui64_to_str.c \
 				float64_set.c \
 				float64_get.c \
 				float_print.c \
-				vs_math.c \
-				ft_utils.c
+				vs_math.c
 
 SRCS		:=	$(SRCS:%=$(SRC_DIR)/%)
 

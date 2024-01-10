@@ -6,26 +6,13 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:56:48 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/06 17:54:10 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/06 18:11:57 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include <stdio.h>
 #include <limits.h>
 #include <unistd.h>
-/*
-void	stud_d(void)
-{
-	long long	n;
-
-	n = LONG_MAX;
-	//n = INT_MAX;
-	printf("Etude du convertisseur d\n");
-	
-	printf("printf(%%d, n)   = \""); printf ("\" : %i\n", printf("%d", n));
-	printf("printf(%%d, n)   = \""); printf ("\" : %i\n", printf("%li", n));
-	
-}*/
 
 int	main(void)
 {

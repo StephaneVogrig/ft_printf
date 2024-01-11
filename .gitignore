@@ -1,17 +1,6 @@
-ft_printf/.build
-ft_printf/printfTester/
-ft_printf/libftprintf.a
-ft_printf/exe
-ft_printf_essais/a.out
-ft_printf_tester_Paulo_Santana/
-42-ft_printf_Yanis/
-42-ft_printf
-ft_printf_toaster/
-ft_printf_tester
-ft_printf/pft
-ft_printf_tester_paulo6santana/
-ft_printf/.vscode
-.vscode
-ft_printf/unit_test/.build/
-ryu/
+*ft_printf_tester_paulo6santana/
+*.build
+*.vscode
+*ryu/
+*pft
 

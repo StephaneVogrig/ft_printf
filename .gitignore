@@ -3,4 +3,6 @@
 *.vscode
 *ryu/
 *pft
+*a.out
+*libftprintf.a
 

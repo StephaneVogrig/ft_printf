@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:26:20 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 19:23:07 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/11 03:41:36 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <limits.h>
+# include "../libft_printf/include/ft_printf.h"
 # include "nbr_digit_unit_test.h"
 # include "float_tests.h"
 

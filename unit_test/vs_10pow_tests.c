@@ -1,26 +1,31 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nbr_digit.h                                        :+:      :+:    :+:   */
+/*   vs_10pow_tests.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 16:09:21 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 22:59:10 by stephane         ###   ########.fr       */
+/*   Created: 2024/01/11 03:35:46 by stephane          #+#    #+#             */
+/*   Updated: 2024/01/11 04:30:40 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef INT_LEN_B10_H
-# define INT_LEN_B10_H
 
-# include "float.h"
-# include "vs_math.h"
-# include "vs_type.h"
+#include "ft_printf.h"
+#include <stdio.h>
 
-int		nbr_digit_ui8(t_ui8 n);
-int		nbr_digit_ui16(t_ui16 n);
-int		nbr_digit_ui32(t_ui32 n);
-int		nbr_digit_ui64(t_ui64 n);
-t_ui16	nbr_digit_float64_integer_part(t_float128 n);
+static void	print_test(int n)
+{
+	printf("%3i = %.17Le\n", n, vs_10pow(n));
+}
 
-#endif
+int	main(void)
+{
+	t_float128	n;
+
+		print_test(23);
+	n = -1;
+	while (n++ <= 308)
+		print_test(n);
+	return (0);
+}

@@ -6,7 +6,7 @@
 #    By: stephane <stephane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2024/01/10 23:28:52 by stephane         ###   ########.fr        #
+#    Updated: 2024/01/11 02:51:04 by stephane         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,26 +16,27 @@ NAME = libftprintf.a
 # variables                                                                    #
 #------------------------------------------------------------------------------#
 
-SRC_DIR		:=	.
+INCS		:=	include
+SRC_DIR		:=	src
 SRCS 		:=	ft_printf.c \
 				buffer.c \
-				format_u.c \
-				format_pc.c \
-				format_i.c \
 				format_c.c \
+				format_f.c \
+				format_i.c \
 				format_p.c \
+				format_pc.c \
 				format_s.c \
+				format_u.c \
 				format_x.c \
 				format_xupper.c \
-				format_f.c \
 				field.c \
+				float64_set.c \
+				float64_get.c \
+				nbr_digit.c \
 				nbrstr_to_buffer.c \
 				parsing.c \
 				set_specification.c \
 				ui64_to_str.c \
-				float64_set.c \
-				float64_get.c \
-				float_print.c \
 				vs_math.c
 
 SRCS		:=	$(SRCS:%=$(SRC_DIR)/%)
@@ -46,8 +47,8 @@ OBJS 		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS		:=	$(OBJS:.o=.d)
 
 CC			:=	cc
-CFLAGS		:= 	-Wall -Wextra -Werror -g
-CPPFLAGS	:=	-MMD -MP
+CFLAGS		:= 	-Wall -Wextra -Werror
+CPPFLAGS	:=	$(addprefix -I, $(INCS)) -MMD -MP
 AR			:=	ar
 ARFLAGS		:=	-r -c -s
 

@@ -6,13 +6,13 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:01:11 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 15:47:59 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:48:56 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-static int	format_i_min(t_spec *spec, t_buffer *buffer)
+static inline int	format_i_min(t_spec *spec, t_buffer *buffer)
 {
 	t_nbrstr	nbrstr;
 	
@@ -24,7 +24,7 @@ static int	format_i_min(t_spec *spec, t_buffer *buffer)
 	return (1);
 }
 
-static int	format_i_negative(long long nbr, t_spec *spec, t_buffer *buffer)
+static inline int	format_i_negative(long long nbr, t_spec *spec, t_buffer *buffer)
 {
 	char		str[LEN_MAXLONGLONG];
 	t_nbrstr	nbrstr;
@@ -37,7 +37,7 @@ static int	format_i_negative(long long nbr, t_spec *spec, t_buffer *buffer)
 	return (1);
 }
 
-static int	format_i_positive(t_ui64 nbr, t_spec *spec, t_buffer *buffer)
+static inline int	format_i_positive(t_ui64 nbr, t_spec *spec, t_buffer *buffer)
 {
 	char		str[LEN_MAXLONGLONG];
 	t_nbrstr	nbrstr;

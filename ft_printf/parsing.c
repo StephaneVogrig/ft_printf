@@ -6,13 +6,28 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:22:30 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 00:59:39 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:15:18 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-static t_ui64	arg_to_ull(va_list args, t_spec *spec)
+inline char	*spec_str_to_int(char *format, int *nbr)
+{
+	if (IS_NOT_DIGIT(*format))
+		return (format);
+	*nbr = 0;
+	while (IS_DIGIT(*format))
+	{
+		*nbr = *nbr * 10 + *format - '0';
+		if (*nbr > INT_MAX)
+			return (NULL);
+		format++;
+	}	
+	return (format);
+}
+
+static inline t_ui64	arg_to_ui64(va_list args, t_spec *spec)
 {
 	if (spec->length[0] == 'l')
 	{
@@ -23,7 +38,7 @@ static t_ui64	arg_to_ull(va_list args, t_spec *spec)
 	return ((t_ui64)va_arg(args, unsigned int));
 }
 
-static t_int64	arg_to_ll(va_list args, t_spec *spec)
+static inline t_int64	arg_to_i64(va_list args, t_spec *spec)
 {
 	int	arg;
 	if (spec->length[0] == 'l')
@@ -52,15 +67,15 @@ static int	parse_conversion(char c, va_list args, t_spec *spec, \
 	else if (c == 'p')
 		return (format_p(va_arg(args, void *), spec, buffer));
 	else if (c == 'i' || c == 'd')
-		return (format_i(arg_to_ll(args, spec), spec, buffer));
+		return (format_i(arg_to_i64(args, spec), spec, buffer));
 	else if (c == 'u')
-		return (format_u(arg_to_ull(args, spec), spec, buffer));
+		return (format_u(arg_to_ui64(args, spec), spec, buffer));
 	else if (c == 'f')
 		return (format_f(va_arg(args, t_float64), spec, buffer));
 	else if (c == 'x')
-		return (format_x(arg_to_ull(args, spec), spec, buffer));
+		return (format_x(arg_to_ui64(args, spec), spec, buffer));
 	else if (c == 'X')
-		return (format_X(arg_to_ull(args, spec), spec, buffer));
+		return (format_X(arg_to_ui64(args, spec), spec, buffer));
 	return (0);
 }
 

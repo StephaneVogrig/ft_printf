@@ -6,11 +6,11 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 15:50:33 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 23:24:47 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 22:54:11 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "nbr_digit.h"
+#include "ft_printf.h"
 
 int nbr_digit_ui8(t_ui8 n)
 {
@@ -56,9 +56,9 @@ int	nbr_digit_ui32(t_ui32 n)
 			return (6);	
 		return (7);	
 	}
-	if (n < 100000000)
+	if (n < 1e8)
 		return (8);	
-	if (n < 1000000000)
+	if (n < 1e9)
 		return (9);	
 	return (10);	
 }
@@ -92,9 +92,9 @@ int	nbr_digit_ui64(t_ui64 n)
 	return (20);
 }
 
-int	nbr_digit_float64_integer_part(t_float128 n)
+t_ui16	nbr_digit_float64_integer_part(t_float128 n)
 {
-	int	nbr_digit;
+	t_ui16	nbr_digit;
 	
 	nbr_digit = 0;
 	while (n >= 1e19L)

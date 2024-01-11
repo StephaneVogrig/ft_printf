@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 15:52:05 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 22:45:00 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,17 +18,20 @@
 # include <limits.h>
 # include "vs_type.h"
 # include "float.h"
-# include "nbr_digit.h"
 
 # define BUFFER_SIZE 1024
 # define LEN_MAXLONGLONG 20
 # define MAX_DIGIT_HEXA 16
 # define FALSE 0
 # define TRUE 1
+# define LEN_NIL 5
+
+# define IS_DIGIT(c) ('0' <= c && c <= '9')
+# define IS_NOT_DIGIT(c) (c < '0' && '9' < c)
 
 typedef struct buffer{
 	char	data[BUFFER_SIZE];
-	int		offset;
+	t_ui32	offset;
 	ssize_t	writed;
 }	t_buffer;
 
@@ -57,17 +60,12 @@ typedef struct s_nbrstr {
 	char	is_zero;
 }	t_nbrstr;
 
-typedef struct s_round {
-	t_ui32	nbr_digit : 16;
-	t_ui32	intpart : 1;
-	t_ui32	decpart : 1;
-}	t_round;
-
 int			ft_printf(const char *format, ...);
 
 /* parsing -------------------------------------------------------------------*/
 const char	*parse_arg(const char *format, t_buffer *buffer, va_list args, \
 			int *errors);
+char		*spec_str_to_int(char *format, int *nbr);
 
 /* set specifications --------------------------------------------------------*/
 const char	*set_flags(const char *format, t_spec *spec);
@@ -92,12 +90,11 @@ int			format_pc(t_buffer	*buffer);
 int			format_i(t_int64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_p(void *p, t_spec *spec, t_buffer *buffer);
 int			format_s(char *str, t_spec *spec, t_buffer *buffer);
-int			format_s_float(char *str, t_spec *spec, t_buffer *buffer);
-int			format_s_only_width(char *str, t_spec *spec, t_buffer *buffer);
 int			format_u(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_x(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_X(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_f(double nbr, t_spec *spec, t_buffer *buffer);
+int			format_s_float(char *str, t_spec *spec, t_buffer *buffer);
 
 /* field --------------------------------------------------------------------*/
 void		field_compute_empty_float(t_spec *spec, int nbr_digit_int);
@@ -110,12 +107,14 @@ char		*ui64_to_str_dec(char *str, t_ui64 n);
 char		*ui64_to_str_hexalower(char *str, t_ui64 n);
 char		*ui64_to_str_hexaupper(char *str, t_ui64 n);
 
-/* math ----------------------------------------------------------------------*/
-t_float128	vs_10pow(int p);
+/* nbr digit ----------------------------------------------------------------*/
+int			nbr_digit_ui8(t_ui8 n);
+int			nbr_digit_ui16(t_ui16 n);
+int			nbr_digit_ui32(t_ui32 n);
+int			nbr_digit_ui64(t_ui64 n);
+t_ui16		nbr_digit_float64_integer_part(t_float128 n);
 
-/* ft utils ------------------------------------------------------------------*/
-int			ft_isdigit(int c);
-size_t		ft_strlen(const char *s);
-char		*str_to_int(char *format, int *nbr);
+/* math ----------------------------------------------------------------------*/
+t_float128	vs_10pow(t_ui16 p);
 
 #endif

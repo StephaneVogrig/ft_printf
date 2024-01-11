@@ -6,13 +6,13 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:26:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 00:54:41 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 22:50:01 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
 
-t_round	compute_round(t_float128 nbr, int precision)
+static inline t_round	compute_round(t_float128 nbr, int precision)
 {
 	t_round	round;
 	int		digit;
@@ -41,7 +41,8 @@ t_round	compute_round(t_float128 nbr, int precision)
 	return (round);
 }
 
-t_float64	integer_to_buffer(t_float128 nbr, int power10, t_buffer *buffer)
+static inline t_float64	integer_to_buffer(t_float128 nbr, int power10, \
+						t_buffer *buffer)
 {
 	int 		digit;
 	t_float128	mul;
@@ -62,7 +63,8 @@ t_float64	integer_to_buffer(t_float128 nbr, int power10, t_buffer *buffer)
 	return (nbr);
 }
 
-void	decimal_to_buffer(t_float128 nbr, int precision, t_round round, t_buffer *buffer)
+static inline void	decimal_to_buffer(t_float128 nbr, int precision, \
+					t_round round, t_buffer *buffer)
 {
 	int	digit;
 
@@ -81,9 +83,9 @@ void	decimal_to_buffer(t_float128 nbr, int precision, t_round round, t_buffer *b
 		buffer_add_char(buffer, '0', round.nbr_digit);
 }
 
-void	double_to_buffer(t_float64 nbr, t_spec *spec, t_buffer *buffer)
+static inline void	double_to_buffer(t_float64 nbr, t_spec *spec, t_buffer *buffer)
 {
-	int			nbr_digit_int;
+	t_ui16		nbr_digit_int;
 	t_round		round;
 	t_float64	decimal;
 

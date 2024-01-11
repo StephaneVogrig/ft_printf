@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:33:14 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/09 17:07:37 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/11 01:14:25 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -17,8 +17,8 @@ ssize_t	buffer_print(t_buffer buffer)
 	return (write(1, buffer.data, buffer.offset) + buffer.writed);
 }
 
-/*	Copy n characters c in buffer and update offset.                   */
-/*	If buffer is full, it is flush by write.                                  */
+// Copy n characters c in buffer and update offset.
+// If buffer is full, it is flush by write.
 void	buffer_add_char(t_buffer *buffer, char c, int n)
 {
 	while (n--)
@@ -32,8 +32,8 @@ void	buffer_add_char(t_buffer *buffer, char c, int n)
 	}
 }
 
-/*	Copy n first characters of str in buffer and update offset.        */
-/*	If buffer is full, it is flush by write.                                  */
+// Copy n first characters of str in buffer and update offset.
+// If buffer is full, it is flush by write.
 void	buffer_add_str(t_buffer *buffer, char *str, size_t n)
 {
 	while (n--)

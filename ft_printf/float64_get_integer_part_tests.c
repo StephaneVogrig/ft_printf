@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:23:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 15:08:40 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 23:01:54 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,7 +24,6 @@ static void	print_test(t_float64 n, t_float64 expected, t_float64 output, t_test
 
 void	float_get_integer_part_tests(void)
 {
-	int	i;
 	t_test	test;
 	
 	test.success = 0;

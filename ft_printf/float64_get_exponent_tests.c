@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 04:19:44 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 00:17:16 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 23:01:03 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,7 +24,6 @@ static void	print_test(t_float64 n, int expected, int output, t_test *test)
 
 void	float64_get_exponent_tests(void)
 {
-int	i;
 	t_test	test;
 	
 	test.success = 0;

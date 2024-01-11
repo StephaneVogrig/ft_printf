@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:31:35 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 18:37:37 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 20:27:31 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -15,6 +15,6 @@
 
 #include "vs_type.h"
 
-t_float128	vs_10pow(int p);
+t_float128	vs_10pow(t_ui16 p);
 
 #endif

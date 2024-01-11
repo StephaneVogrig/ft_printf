@@ -6,11 +6,21 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 22:44:21 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/07 10:09:07 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:05:28 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
+
+static inline size_t	pf_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 int	format_s_float(char *str, t_spec *spec, t_buffer *buffer)
 {
@@ -29,21 +39,6 @@ int	format_s_float(char *str, t_spec *spec, t_buffer *buffer)
 	return (1);
 }
 
-int	format_s_only_width(char *str, t_spec *spec, t_buffer *buffer)
-{
-	size_t	len;
-
-	if (spec->width == - 1)
-		spec->width = 0;
-	len = ft_strlen(str);
-	if (spec->right_align && (size_t)spec->width > len)
-		buffer_add_char(buffer, ' ', (size_t)spec->width - len);
-	buffer_add_str(buffer, str, len);
-	if (spec->left_align && (size_t)spec->width > len)
-		buffer_add_char(buffer, ' ', (size_t)spec->width - len);
-	return (1);
-}
-
 int	format_s(char *str, t_spec *spec, t_buffer *buffer)
 {
 	size_t	len;
@@ -54,7 +49,7 @@ int	format_s(char *str, t_spec *spec, t_buffer *buffer)
 		str = "";
 	else if (!str)
 		str = "(null)";
-	len = ft_strlen(str);
+	len = pf_strlen(str);
 	if (spec->precision > -1 && len > (size_t)spec->precision)
 		len = spec->precision;
 	if (spec->right_align && (size_t)spec->width > len)

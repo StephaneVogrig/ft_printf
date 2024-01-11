@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:13:52 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 00:47:21 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 22:51:26 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -42,19 +42,22 @@ typedef	union u_float64{
 	};
 }	t_u_float64;
 
-/* float64_get --------------------------------------------------------------*/
+typedef struct s_round {
+	t_ui32	nbr_digit : 16;
+	t_ui32	intpart : 1;
+	t_ui32	decpart : 1;
+}	t_round;
+
+/* float64_get ---------------------------------------------------------------*/
 int			float64_get_sign(t_float64 f);
 int			float64_get_exponent(t_float64 f);
 t_ui64		float64_get_mantissa(t_float64 f);
 t_float64	float64_get_decimal_part(t_float64 nbr);
 t_float64	float64_get_integer_part(t_float64 nbr);
 
-/* float64_set --------------------------------------------------------------*/
+/* float64_set ---------------------------------------------------------------*/
 t_float64	float64_set_sign(t_float64 f, int sign);
 t_float64	float64_set_exponent(t_float64 f, int exponent);
 t_float64	float64_set_mantissa(t_float64 f, t_ui64 mantissa);
-
-/* float64_print --------------------------------------------------------------*/
-void		print_float64_to_binary(t_float64 nbr, char c);
 
 #endif

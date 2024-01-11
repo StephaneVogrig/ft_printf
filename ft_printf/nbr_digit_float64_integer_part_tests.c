@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:21:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 00:10:29 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 23:01:24 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,7 +24,6 @@ static void	print_test(t_float64 n, int expected, int output, t_test *test)
 
 void	nbr_digit_float64_integer_part_tests(void)
 {
-	int	i;
 	int	n;
 	t_float64	m;
 	t_test	test;

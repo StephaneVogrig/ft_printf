@@ -6,12 +6,11 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 19:20:44 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 12:52:17 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:44:29 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "ft_printf.h"
-#define LEN_NIL 5
 
 static int	format_p_nil(t_spec *spec, t_buffer *buffer)
 {

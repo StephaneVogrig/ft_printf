@@ -6,7 +6,7 @@
 /*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 01:50:09 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/03 16:49:52 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/10 23:02:19 by stephane         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,8 +14,6 @@
 
 void	tests_X(void)
 {
-	int	result;
-
 	printf("\n");
 	printf("test HEXADECIMAL\n");
 	printf("--------------------------\n");

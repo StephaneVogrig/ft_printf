@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:22:30 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/13 01:10:42 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/13 12:05:25 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline t_ui64	arg_to_ui64(va_list args, t_spec *spec)
 	if (spec->length[0] == 'l')
 	{
 		if (spec->length[1] == 'l')
-			return (va_arg(args, t_ui64));
+			return (va_arg(args, unsigned long long));
 		return ((t_ui64)va_arg(args, unsigned long));
 	}
 	return ((t_ui64)va_arg(args, unsigned int));
@@ -30,8 +30,8 @@ static inline t_int64	arg_to_i64(va_list args, t_spec *spec)
 	if (spec->length[0] == 'l')
 	{
 		if (spec->length[1] == 'l')
-			return (va_arg(args, t_int64));
-		return ((t_int64)va_arg(args, long));
+			return (va_arg(args, long long int));
+		return ((t_int64)va_arg(args, long int));
 	}
 	arg = va_arg(args, int);
 	if (arg == INT_MIN)

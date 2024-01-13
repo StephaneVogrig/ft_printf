@@ -1,18 +1,18 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   nbr_digit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 15:50:33 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 22:54:11 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:25:54 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int nbr_digit_ui8(t_ui8 n)
+int	nbr_digit_ui8(t_ui8 n)
 {
 	if (n < 10)
 		return (1);
@@ -21,7 +21,7 @@ int nbr_digit_ui8(t_ui8 n)
 	return (3);
 }
 
-int nbr_digit_ui16(t_ui16 n)
+int	nbr_digit_ui16(t_ui16 n)
 {
 	if (n < 10)
 		return (1);
@@ -29,7 +29,7 @@ int nbr_digit_ui16(t_ui16 n)
 	{
 		if (n < 100)
 			return (2);
-		return (3);	
+		return (3);
 	}
 	if (n < 10000)
 		return (4);
@@ -45,7 +45,7 @@ int	nbr_digit_ui32(t_ui32 n)
 		if (n < 100)
 			return (2);
 		if (n < 1000)
-			return (3);	
+			return (3);
 		return (4);
 	}
 	if (n < 10000000)
@@ -53,14 +53,14 @@ int	nbr_digit_ui32(t_ui32 n)
 		if (n < 100000)
 			return (5);
 		if (n < 1000000)
-			return (6);	
-		return (7);	
+			return (6);
+		return (7);
 	}
 	if (n < 1e8)
-		return (8);	
+		return (8);
 	if (n < 1e9)
-		return (9);	
-	return (10);	
+		return (9);
+	return (10);
 }
 
 int	nbr_digit_ui64(t_ui64 n)
@@ -95,7 +95,7 @@ int	nbr_digit_ui64(t_ui64 n)
 t_ui16	nbr_digit_float64_integer_part(t_float128 n)
 {
 	t_ui16	nbr_digit;
-	
+
 	nbr_digit = 0;
 	while (n >= 1e19L)
 	{

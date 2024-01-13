@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   vs_type.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:02:22 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 18:23:40 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:09:01 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef VS_TYPE_H
 # define VS_TYPE_H
@@ -23,7 +23,7 @@ typedef unsigned short		t_ui16;
 typedef unsigned int		t_ui32;
 typedef unsigned long int	t_ui64;
 
-typedef	float 				t_float32;
+typedef float				t_float32;
 typedef double				t_float64;
 typedef long double			t_float128;
 

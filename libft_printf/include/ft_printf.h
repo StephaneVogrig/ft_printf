@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 22:45:00 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/13 01:21:45 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
@@ -26,9 +26,6 @@
 # define TRUE 1
 # define LEN_NIL 5
 
-# define IS_DIGIT(c) ('0' <= c && c <= '9')
-# define IS_NOT_DIGIT(c) (c < '0' && '9' < c)
-
 typedef struct buffer{
 	char	data[BUFFER_SIZE];
 	t_ui32	offset;
@@ -39,13 +36,13 @@ typedef struct s_spec {
 	union {
 		t_ui8	flags;
 		struct {
-			t_ui8 flag_hash : 1;
-			t_ui8 flag_zero	: 1;
-			t_ui8 flag_minus : 1;
-			t_ui8 flag_space : 1;
-			t_ui8 flag_plus : 1;
-			t_ui8 right_align : 1;
-			t_ui8 left_align : 1;
+			t_ui8	flag_hash : 1;
+			t_ui8	flag_zero	: 1;
+			t_ui8	flag_minus : 1;
+			t_ui8	flag_space : 1;
+			t_ui8	flag_plus : 1;
+			t_ui8	right_align : 1;
+			t_ui8	left_align : 1;
 		};
 	};
 	char	prefix;
@@ -77,7 +74,7 @@ void		set_prefix(t_spec *spec);
 /* nbrstr_to_buffer ----------------------------------------------------------*/
 void		nbrstr_to_buffer(t_buffer *buffer, t_spec *spec, t_nbrstr *ns);
 void		prefixe_to_buffer(t_buffer *buffer, char prefixe);
-					
+
 /* buffer --------------------------------------------------------------------*/
 void		buffer_add_char(t_buffer *buffer, char c, int n);
 void		buffer_add_str(t_buffer *buffer, char *str, size_t len);
@@ -92,7 +89,7 @@ int			format_p(void *p, t_spec *spec, t_buffer *buffer);
 int			format_s(char *str, t_spec *spec, t_buffer *buffer);
 int			format_u(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_x(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
-int			format_X(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
+int			format_xupper(t_ui64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_f(double nbr, t_spec *spec, t_buffer *buffer);
 int			format_s_float(char *str, t_spec *spec, t_buffer *buffer);
 
@@ -101,6 +98,9 @@ void		field_compute_empty_float(t_spec *spec, int nbr_digit_int);
 void		field_compute_empty_integer(t_spec *spec, int nbr_digit_int);
 void		field_empty_before_to_buffer(t_spec *spec, t_buffer *buffer);
 void		field_empty_after_to_buffer(t_spec *spec, t_buffer *buffer);
+
+/* ui64 to str --------------------------------------------------------------*/
+char	*spec_str_to_int(char *format, int *nbr);
 
 /* ui64 to str --------------------------------------------------------------*/
 char		*ui64_to_str_dec(char *str, t_ui64 n);

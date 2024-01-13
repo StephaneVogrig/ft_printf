@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   float.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:13:52 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 22:51:26 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:22:06 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef FLOAT_H
 # define FLOAT_H
@@ -32,13 +32,16 @@
 # define FLOAT64_CLOSE_ZERO_POSITIVE 4.9406564584124654e-324
 # define FLOAT64_CLOSE_ZERO_NEGATIVE -4.9406564584124654e-324
 
-typedef	union u_float64{
+# define DOUBLE_BIAIS_NORMALISE 1023
+# define DOUBLE_BIAIS_DENORMALISE 1022
+
+typedef union u_float64{
 	double	f;
 	t_ui64	ui;
 	struct {
-		t_ui64 mantissa	: 52;
-		t_ui64 exponent_biais : 11;
-		t_ui64 sign	: 1;
+		t_ui64	mantissa	: 52;
+		t_ui64	exponent_biais : 11;
+		t_ui64	sign	: 1;
 	};
 }	t_u_float64;
 

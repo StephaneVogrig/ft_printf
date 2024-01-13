@@ -1,23 +1,23 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   set_specification.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/10 17:26:35 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/12 20:53:16 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
 // set prefix only based on flags '+' and '-'
 inline void	set_prefix(t_spec *spec)
 {
-	if (spec->flag_plus)	
+	if (spec->flag_plus)
 		spec->prefix = '+';
-	else if (spec->flag_space)	
+	else if (spec->flag_space)
 		spec->prefix = ' ';
 	else
 		spec->prefix = '\0';
@@ -39,7 +39,7 @@ const char	*set_flags(const char *format, t_spec *spec)
 		else if (*format == '+')
 			spec->flag_plus = TRUE;
 		else
-			break;
+			break ;
 		format++;
 	}
 	spec->left_align = (spec->flag_minus == 1);
@@ -71,7 +71,7 @@ const char	*set_precision(const char *format, t_spec *spec, va_list args)
 	spec->precision = -1;
 	if (*format != '.')
 		return (format);
-	format++;
+format++;
 	if (*format == '*')
 	{
 		spec->precision = va_arg(args, int);
@@ -80,7 +80,7 @@ const char	*set_precision(const char *format, t_spec *spec, va_list args)
 		return (++format);
 	}
 	spec->precision = 0;
-	return (spec_str_to_int((char*)format, &spec->precision));
+	return (spec_str_to_int((char *)format, &spec->precision));
 }
 
 const char	*set_length(const char *format, t_spec *spec)

@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   format_f.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:26:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 22:50:01 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/12 20:49:59 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -32,7 +32,7 @@ static inline t_round	compute_round(t_float128 nbr, int precision)
 		if (digit < 9)
 			round.nbr_digit = 0;
 		else
-			round.nbr_digit++;	
+			round.nbr_digit++;
 	}
 	round.decpart = nbr >= 0.5;
 	round.intpart = round.decpart && round.nbr_digit == precision;
@@ -44,13 +44,13 @@ static inline t_round	compute_round(t_float128 nbr, int precision)
 static inline t_float64	integer_to_buffer(t_float128 nbr, int power10, \
 						t_buffer *buffer)
 {
-	int 		digit;
+	int			digit;
 	t_float128	mul;
 
 	mul = vs_10pow(power10);
 	while (power10--)
 	{
-		digit =(int)(nbr / mul);
+		digit = (int)(nbr / mul);
 		buffer_add_char(buffer, digit + '0', 1);
 		nbr -= (digit * mul);
 		if (power10 == 21)
@@ -83,7 +83,8 @@ static inline void	decimal_to_buffer(t_float128 nbr, int precision, \
 		buffer_add_char(buffer, '0', round.nbr_digit);
 }
 
-static inline void	double_to_buffer(t_float64 nbr, t_spec *spec, t_buffer *buffer)
+static inline void	double_to_buffer(t_float64 nbr, t_spec *spec, \
+t_buffer *buffer)
 {
 	t_ui16		nbr_digit_int;
 	t_round		round;
@@ -112,10 +113,10 @@ int	format_f(t_float64 nbr, t_spec *spec, t_buffer *buffer)
 	{
 		if (float64_get_mantissa(nbr))
 			return (format_s_float("nan", spec, buffer));
-		return (format_s_float("inf", spec, buffer));	
+		return (format_s_float("inf", spec, buffer));
 	}
 	if (spec->precision == -1)
 		spec->precision = 6;
 	double_to_buffer(nbr, spec, buffer);
-	return (1);	
+	return (1);
 }

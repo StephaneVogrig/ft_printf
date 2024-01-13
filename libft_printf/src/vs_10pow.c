@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vs_math.c                                          :+:      :+:    :+:   */
+/*   vs_10pow.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:32:22 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/11 04:27:36 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:50:54 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -17,7 +17,7 @@ static inline t_float128	vs_10pow_3(t_ui16 p)
 	if (p < 19)
 	{
 		if (p == 16)
-			return (1e16);		
+			return (1e16);
 		if (p == 17)
 			return (1e17);
 		return (1e18);
@@ -27,7 +27,7 @@ static inline t_float128	vs_10pow_3(t_ui16 p)
 		if (p == 19)
 			return (1e19);
 		return (1e20);
-	}	
+	}
 	if (p == 21)
 		return (1e21);
 	return (1e22);
@@ -45,7 +45,7 @@ static inline t_float128	vs_10pow_2(t_ui16 p)
 			return (1e9);
 		if (p == 10)
 			return (1e10);
-		return (1e11);		
+		return (1e11);
 	}
 	if (p < 16)
 	{
@@ -57,7 +57,7 @@ static inline t_float128	vs_10pow_2(t_ui16 p)
 			return (1e14);
 		return (1e15);
 	}
-	return	(vs_10pow_3(p));
+	return (vs_10pow_3(p));
 }
 
 static inline t_float128	vs_10pow_1(t_ui16 p)
@@ -78,15 +78,15 @@ static inline t_float128	vs_10pow_1(t_ui16 p)
 			return (1e5);
 		return (1e6);
 	}
-	return	(vs_10pow_2(p));
+	return (vs_10pow_2(p));
 }
-	
+
 t_float128	vs_10pow(t_ui16 p)
 {
-	t_float128 result;
+	t_float128	result;
 
 	if (p < 23)
-		return	(vs_10pow_1(p));
+		return (vs_10pow_1(p));
 	result = 1;
 	while (p > 22)
 	{

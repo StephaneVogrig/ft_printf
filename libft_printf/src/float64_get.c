@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   float64_get.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:11:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 15:29:04 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:23:20 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "float.h"
 
@@ -19,7 +19,7 @@ int	float64_get_sign(t_float64 nbr)
 	uf.f = nbr;
 	if (uf.sign)
 		return (-1);
-	return (1);	
+	return (1);
 }
 
 int	float64_get_exponent(t_float64 nbr)
@@ -29,9 +29,9 @@ int	float64_get_exponent(t_float64 nbr)
 	if (nbr == 0.0)
 		return (0);
 	uf.f = nbr;
-	if (uf.exponent_biais ==  0)
-		return ((int)uf.exponent_biais - 1022);
-	return ((int)uf.exponent_biais - 1023);	
+	if (uf.exponent_biais == 0)
+		return ((int)uf.exponent_biais - DOUBLE_BIAIS_DENORMALISE);
+	return ((int)uf.exponent_biais - DOUBLE_BIAIS_NORMALISE);
 }
 
 t_ui64	float64_get_mantissa(t_float64 f)
@@ -39,7 +39,7 @@ t_ui64	float64_get_mantissa(t_float64 f)
 	t_u_float64	uf;
 
 	uf.f = f;
-	return ((t_ui64)uf.mantissa);	
+	return ((t_ui64)uf.mantissa);
 }
 
 t_float64	float64_get_decimal_part(t_float64 nbr)
@@ -74,5 +74,5 @@ t_float64	float64_get_integer_part(t_float64 nbr)
 	uf.f = nbr;
 	uf.mantissa >>= 51 - exp;
 	uf.mantissa <<= 51 - exp;
-	return (nbr);	
+	return (nbr);
 }

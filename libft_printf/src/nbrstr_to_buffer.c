@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   nbrstr_to_buffer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 01:16:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/09 17:01:17 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:39:10 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -19,11 +19,11 @@ void	prefixe_to_buffer(t_buffer *buffer, char prefixe)
 	else if (prefixe == 'X')
 		buffer_add_str(buffer, "0X", 2);
 	else if (prefixe)
-		buffer_add_char(buffer, prefixe, 1);	
+		buffer_add_char(buffer, prefixe, 1);
 }
 
 static void	precision_compute(t_spec *spec, int nbr_digit_int)
-{	
+{
 	if (spec->precision > nbr_digit_int)
 		spec->precision -= nbr_digit_int;
 	else
@@ -35,7 +35,7 @@ void	nbrstr_to_buffer(t_buffer *buffer, t_spec *spec, t_nbrstr *nbrstr)
 	if (spec->precision > -1)
 		spec->flag_zero = 0;
 	if (nbrstr->is_zero && spec->precision == 0)
-		nbrstr->nbr_digit = 0;	
+		nbrstr->nbr_digit = 0;
 	precision_compute(spec, nbrstr->nbr_digit);
 	field_compute_empty_integer(spec, nbrstr->nbr_digit);
 	field_empty_before_to_buffer(spec, buffer);

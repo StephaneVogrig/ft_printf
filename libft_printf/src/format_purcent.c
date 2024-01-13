@@ -6,13 +6,13 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:52:26 by svogrig           #+#    #+#             */
-/*   Updated: 2023/12/21 19:37:36 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/13 18:24:51 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	format_pc(t_buffer	*buffer)
+int	format_purcent(t_buffer	*buffer)
 {
 	buffer_add_char(buffer, '%', 1);
 	return (1);

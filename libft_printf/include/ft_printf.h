@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/13 01:21:45 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/13 18:23:46 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			buffer_add_spec(t_buffer *buffer, t_spec *spec);
 
 /* format --------------------------------------------------------------------*/
 int			format_c(char c, t_spec *spec, t_buffer *buffer);
-int			format_pc(t_buffer	*buffer);
+int			format_purcent(t_buffer	*buffer);
 int			format_i(t_int64 nbr, t_spec *spec, t_buffer *buffer);
 int			format_p(void *p, t_spec *spec, t_buffer *buffer);
 int			format_s(char *str, t_spec *spec, t_buffer *buffer);
@@ -106,15 +106,5 @@ char	*spec_str_to_int(char *format, int *nbr);
 char		*ui64_to_str_dec(char *str, t_ui64 n);
 char		*ui64_to_str_hexalower(char *str, t_ui64 n);
 char		*ui64_to_str_hexaupper(char *str, t_ui64 n);
-
-/* nbr digit ----------------------------------------------------------------*/
-int			nbr_digit_ui8(t_ui8 n);
-int			nbr_digit_ui16(t_ui16 n);
-int			nbr_digit_ui32(t_ui32 n);
-int			nbr_digit_ui64(t_ui64 n);
-t_ui16		nbr_digit_float64_integer_part(t_float128 n);
-
-/* math ----------------------------------------------------------------------*/
-t_float128	vs_10pow(t_ui16 p);
 
 #endif

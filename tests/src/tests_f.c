@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   tests_f.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephane <stephane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:34:56 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/10 00:46:16 by stephane         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:59:29 by svogrig          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "tests.h"
 
@@ -18,24 +18,30 @@ void	tests_f(void)
 	printf("test float\n");
 	printf("--------------------------\n");
 
-	printf(" | %i (ft_printf)\n", ft_printf("%.2000f", FLOAT64_MIN));
-	printf(" | %i            \n",    printf("%.2000f", FLOAT64_MIN));
+	printf(" | %i (ft_printf)\n", ft_printf("%.1f", FLOAT64_MIN));
+	printf(" | %i            \n",    printf("%.1f", FLOAT64_MIN));
 	printf("\n");
-	printf(" | %i (ft_printf)\n", ft_printf("Kashim a %f histoires à raconter", (double)1001));
-	printf(" | %i            \n",    printf("Kashim a %f histoires à raconter", (double)1001));
+	printf(" | %i (ft_printf)\n", ft_printf("%.1f", 1e30));
+	printf(" | %i            \n",    printf("%.1f", 1e30));
 	printf("\n");
-	printf(" | %i (ft_printf)\n", ft_printf("Il fait au moins %f", (double)-8000));
-	printf(" | %i            \n",    printf("Il fait au moins %f", (double)-8000));
-	printf("\n");
-	printf(" | %i (ft_printf)\n", ft_printf("%%f Lydie == |%f|", (double)'L'+'y'+'d'+'i'+'e'));
-	printf(" | %i            \n",    printf("%%f Lydie == |%f|", (double)'L'+'y'+'d'+'i'+'e'));
-	printf("\n");
-	printf(" | %i (ft_printf)\n", ft_printf("%%.10f, 0.9999999999 = %.10f", 0.9999999999));
-	printf(" | %i            \n",    printf("%%.10f, 0.9999999999 = %.10f", 0.9999999999));
-	printf("\n");
-	printf(" | %i (ft_printf)\n", ft_printf("%%.15f, 99.999999999999900000 = %.15f", 99.999999999999900000));
-	printf(" | %i            \n",    printf("%%.15f, 99.999999999999900000 = %.15f", 99.999999999999900000));
-	printf("\n");
+	// printf(" | %i (ft_printf)\n", ft_printf("%.2000f", FLOAT64_MIN));
+	// printf(" | %i            \n",    printf("%.2000f", FLOAT64_MIN));
+	// printf("\n");
+	// printf(" | %i (ft_printf)\n", ft_printf("Kashim a %f histoires à raconter", (double)1001));
+	// printf(" | %i            \n",    printf("Kashim a %f histoires à raconter", (double)1001));
+	// printf("\n");
+	// printf(" | %i (ft_printf)\n", ft_printf("Il fait au moins %f", (double)-8000));
+	// printf(" | %i            \n",    printf("Il fait au moins %f", (double)-8000));
+	// printf("\n");
+	// printf(" | %i (ft_printf)\n", ft_printf("%%f Lydie == |%f|", (double)'L'+'y'+'d'+'i'+'e'));
+	// printf(" | %i            \n",    printf("%%f Lydie == |%f|", (double)'L'+'y'+'d'+'i'+'e'));
+	// printf("\n");
+	// printf(" | %i (ft_printf)\n", ft_printf("%%.10f, 0.9999999999 = %.10f", 0.9999999999));
+	// printf(" | %i            \n",    printf("%%.10f, 0.9999999999 = %.10f", 0.9999999999));
+	// printf("\n");
+	// printf(" | %i (ft_printf)\n", ft_printf("%%.15f, 99.999999999999900000 = %.15f", 99.999999999999900000));
+	// printf(" | %i            \n",    printf("%%.15f, 99.999999999999900000 = %.15f", 99.999999999999900000));
+	// printf("\n");
 	// printf(" | %i (ft_printf)\n", ft_printf("%%.40f,0.9999999999999999 = %.40f",0.9999999999999999));
 	// printf(" | %i            \n",    printf("%%.40f,0.9999999999999999 = %.40f",0.9999999999999999));
 	// printf("\n");

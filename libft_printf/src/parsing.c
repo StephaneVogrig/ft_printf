@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:22:30 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/13 12:05:25 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/13 18:24:30 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	parse_conversion(char c, va_list args, t_spec *spec, \
 	else if (c == 's')
 		return (format_s(va_arg(args, char *), spec, buffer));
 	else if (c == '%')
-		return (format_pc(buffer));
+		return (format_purcent(buffer));
 	else if (c == 'p')
 		return (format_p(va_arg(args, void *), spec, buffer));
 	else if (c == 'i' || c == 'd')

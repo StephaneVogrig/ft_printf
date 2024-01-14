@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 22:20:55 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/14 04:03:44 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 14:02:01 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void	float64_get_decimal_part_tests(void)
 	// print_float64_to_binary(1000000000000000000000000000000.0,'\n');
 	// print_test(1000000000000000000000000000000.0, 0, &test);
 
-	printf("                                                         \r");
+	printf("%80s\r","");
 	printf("%*s %3i / %3i tests passed\n",FIRST_FIELD_WIDTH, "float64_get_decimal_part", test.success, test.nbr);
 }

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:21:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/13 17:29:33 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 13:59:32 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,5 @@ void	nbr_digit_float64_integer_part_tests(void)
 
 	print_test(UCHAR_MAX, 3, &test);
 	printf("                                                         \r");
-	printf("%*s %3i / %3i tests passed\n",FIRST_FIELD_WIDTH, "len_b10_ui8", test.success, test.nbr);
+	printf("%*s %3i / %3i tests passed\n",FIRST_FIELD_WIDTH, "nbr_digit_float64_integer_part", test.success, test.nbr);
 }

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 15:45:33 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/13 22:25:40 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 13:59:03 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void	nbr_digit_ui64_tests(void)
 	}
 	print_test(ULLONG_MAX, 20, nbr_digit_ui64(ULLONG_MAX), &test);
 	printf("                                                         \r");
-	printf("%*s %3i / %3i tests passed\n", FIRST_FIELD_WIDTH, "len_b10_ui64", test.success, test.nbr);
+	printf("%*s %3i / %3i tests passed\n", FIRST_FIELD_WIDTH, "nbr_digit_ui64", test.success, test.nbr);
 }

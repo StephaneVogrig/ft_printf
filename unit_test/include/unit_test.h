@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:26:20 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/14 00:28:23 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 14:02:43 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define RESET "\033[0m"
 # define RED "\033[31m"
 # define GREEN "\033[32m"
-# define FIRST_FIELD_WIDTH -25
+# define FIRST_FIELD_WIDTH -30
 
 typedef struct s_test{
 	int	nbr;

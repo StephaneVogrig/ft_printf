@@ -5,4 +5,5 @@
 *pft
 *a.out
 *libftprintf.a
-
+tests/libft_tests
+unit_test/unit_test

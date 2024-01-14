@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:26:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/13 23:36:20 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 04:55:59 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static inline void	decimal_to_buffer(t_float128 nbr, int precision, \
 }
 
 static inline void	double_to_buffer(t_float64 nbr, t_spec *spec, \
-t_buffer *buffer)
+					t_buffer *buffer)
 {
 	t_ui16		nbr_digit_int;
 	t_round		round;

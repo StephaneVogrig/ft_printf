@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:11:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/12 19:23:20 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 04:10:46 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,12 @@ t_float64	float64_get_decimal_part(t_float64 nbr)
 		return (nbr);
 	if (exp == 0)
 		return (nbr - (t_ui64)nbr);
+	if (exp > 51)
+		return (0.0);
+	return (nbr - (int)nbr);
 	uf.f = nbr;
 	uf.exponent_biais -= exp;
 	uf.mantissa <<= exp;
 	uf.f -= 1;
 	return (uf.f);
-}
-
-t_float64	float64_get_integer_part(t_float64 nbr)
-{
-	int			exp;
-	t_u_float64	uf;
-
-	exp = float64_get_exponent(nbr);
-	if (exp < 0)
-		return (0.0);
-	if (exp == 0)
-		return (nbr - (int)nbr);
-	if (exp > 51)
-		return (nbr);
-	uf.f = nbr;
-	uf.mantissa >>= 51 - exp;
-	uf.mantissa <<= 51 - exp;
-	return (nbr);
 }

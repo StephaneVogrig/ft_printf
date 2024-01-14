@@ -6,7 +6,7 @@
 #    By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2024/01/13 01:18:22 by svogrig          ###   ########.fr        #
+#    Updated: 2024/01/14 03:58:23 by svogrig          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,12 @@ SRCS 		:=	ft_printf.c \
 				format_f.c \
 				format_i.c \
 				format_p.c \
-				format_pc.c \
+				format_purcent.c \
 				format_s.c \
 				format_u.c \
 				format_x.c \
 				format_xupper.c \
 				field.c \
-				float64_set.c \
 				float64_get.c \
 				nbr_digit.c \
 				nbrstr_to_buffer.c \

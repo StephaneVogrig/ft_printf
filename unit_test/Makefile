@@ -6,7 +6,7 @@
 #    By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 02:59:52 by svogrig           #+#    #+#              #
-#    Updated: 2024/01/13 16:21:29 by svogrig          ###   ########.fr        #
+#    Updated: 2024/01/14 00:24:12 by svogrig          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ INCS		:=	include \
 SRC_DIR		:=	src
 SRCS 		:=	main.c \
 				float64_get_exponent_part_tests.c \
+				float64_get_decimal_part_tests.c \
 				float64_get_integer_part_tests.c \
 				nbr_digit_float64_integer_part_tests.c  \
 				nbr_digit_ui8_tests.c \

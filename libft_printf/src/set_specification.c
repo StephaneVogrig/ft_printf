@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:10:29 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/12 20:53:16 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 04:19:49 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ const char	*set_widthfield(const char *format, t_spec *spec, va_list args)
 		}
 		return (++format);
 	}
-	return (spec_str_to_int((char*)format, &spec->width));
+	return (spec_str_to_int((char *)format, &spec->width));
 }
 
 const char	*set_precision(const char *format, t_spec *spec, va_list args)
@@ -71,7 +71,7 @@ const char	*set_precision(const char *format, t_spec *spec, va_list args)
 	spec->precision = -1;
 	if (*format != '.')
 		return (format);
-format++;
+	format++;
 	if (*format == '*')
 	{
 		spec->precision = va_arg(args, int);

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 00:05:06 by svogrig           #+#    #+#             */
-/*   Updated: 2024/01/13 18:23:46 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 04:25:45 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ typedef struct s_spec {
 	union {
 		t_ui8	flags;
 		struct {
-			t_ui8	flag_hash : 1;
+			t_ui8	flag_hash	: 1;
 			t_ui8	flag_zero	: 1;
-			t_ui8	flag_minus : 1;
-			t_ui8	flag_space : 1;
-			t_ui8	flag_plus : 1;
-			t_ui8	right_align : 1;
-			t_ui8	left_align : 1;
+			t_ui8	flag_minus	: 1;
+			t_ui8	flag_space	: 1;
+			t_ui8	flag_plus	: 1;
+			t_ui8	right_align	: 1;
+			t_ui8	left_align	: 1;
 		};
 	};
 	char	prefix;
@@ -100,7 +100,7 @@ void		field_empty_before_to_buffer(t_spec *spec, t_buffer *buffer);
 void		field_empty_after_to_buffer(t_spec *spec, t_buffer *buffer);
 
 /* ui64 to str --------------------------------------------------------------*/
-char	*spec_str_to_int(char *format, int *nbr);
+char		*spec_str_to_int(char *format, int *nbr);
 
 /* ui64 to str --------------------------------------------------------------*/
 char		*ui64_to_str_dec(char *str, t_ui64 n);

@@ -13,7 +13,7 @@ French : [manpages.ubuntu.com](https://manpages.ubuntu.com/manpages/xenial/fr/ma
 ## infos variadic function
 [zestedesavoir.com](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/les-fonctions-a-nombre-variable-darguments/#4-les-macrofonctions-a-nombre-variable-darguments)
 
-
+## Resume du Man
 printf fonction send a srting whith formated variables to stdout.
 The string 'format' contain a character '%' for each variable.
 The following characters after '%' specifies the conversion of the variable.
@@ -102,4 +102,13 @@ precision : '.' followed by an optional positive decimal string
 			- in all other case a string of the data conversion is printing
 			  as describes in their own part.
 		Other specifier in standard printf : e E f F g G a A p n m 
+
+## Testeurs
+[PFT (gavinfielder)](https://github.com/gavinfielder/pft)  
+[printfTester (Tripouille)](https://github.com/Tripouille/printfTester)  
+[ft_printf_tester (paulos-antana)](https://github.com/paulo-santana/ft_printf_tester/blob/master/test)  
+
+
+## collegues
+[Yanis Sabik](https://github.com/Luzog78/42-ft_printf/tree/main)  
 

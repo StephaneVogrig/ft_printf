@@ -6,35 +6,11 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 15:50:33 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/12 19:25:54 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 04:13:58 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	nbr_digit_ui8(t_ui8 n)
-{
-	if (n < 10)
-		return (1);
-	if (n < 100)
-		return (2);
-	return (3);
-}
-
-int	nbr_digit_ui16(t_ui16 n)
-{
-	if (n < 10)
-		return (1);
-	if (n < 1000)
-	{
-		if (n < 100)
-			return (2);
-		return (3);
-	}
-	if (n < 10000)
-		return (4);
-	return (5);
-}
 
 int	nbr_digit_ui32(t_ui32 n)
 {

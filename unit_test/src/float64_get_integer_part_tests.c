@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:23:36 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/13 16:17:47 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/13 22:28:29 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	float_get_integer_part_tests(void)
 	test.nbr = 0;
 	print_test(0.0, 0.0, float64_get_integer_part(0.0), &test);
 	print_test(0.25, 0.0, float64_get_integer_part(0.25), &test);
-	print_test(-42.42, 1.0, float64_get_integer_part(-42.42), &test);
+	print_test(-42.42, 42.0, float64_get_integer_part(-42.42), &test);
 	print_test(1.1, 1.0, float64_get_integer_part(1.1), &test);
 	print_test(10.1, 10.0, float64_get_integer_part(10.1), &test);
 	

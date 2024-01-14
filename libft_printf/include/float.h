@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:13:52 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/13 18:22:25 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 04:15:59 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,13 @@ typedef struct s_round {
 	t_ui32	decpart : 1;
 }	t_round;
 
-/* float64_get ---------------------------------------------------------------*/
+/* float64_get --------------------------------------------------------------*/
 int			float64_get_sign(t_float64 f);
 int			float64_get_exponent(t_float64 f);
 t_ui64		float64_get_mantissa(t_float64 f);
 t_float64	float64_get_decimal_part(t_float64 nbr);
-t_float64	float64_get_integer_part(t_float64 nbr);
-
-/* float64_set ---------------------------------------------------------------*/
-t_float64	float64_set_sign(t_float64 f, int sign);
-t_float64	float64_set_exponent(t_float64 f, int exponent);
-t_float64	float64_set_mantissa(t_float64 f, t_ui64 mantissa);
 
 /* nbr digit ----------------------------------------------------------------*/
-int			nbr_digit_ui8(t_ui8 n);
-int			nbr_digit_ui16(t_ui16 n);
 int			nbr_digit_ui32(t_ui32 n);
 int			nbr_digit_ui64(t_ui64 n);
 t_ui16		nbr_digit_float64_integer_part(t_float128 n);

@@ -6,7 +6,7 @@
 /*   By: svogrig <svogrig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:11:42 by stephane          #+#    #+#             */
-/*   Updated: 2024/01/14 04:10:46 by svogrig          ###   ########.fr       */
+/*   Updated: 2024/01/14 05:42:21 by svogrig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	float64_get_exponent(t_float64 nbr)
 		return (0);
 	uf.f = nbr;
 	if (uf.exponent_biais == 0)
-		return ((int)uf.exponent_biais - DOUBLE_BIAIS_DENORMALISE);
-	return ((int)uf.exponent_biais - DOUBLE_BIAIS_NORMALISE);
+		return ((int)uf.exponent_biais - DOUBLE_BIAS_DENORMALISE);
+	return ((int)uf.exponent_biais - DOUBLE_BIAS_NORMALISE);
 }
 
 t_ui64	float64_get_mantissa(t_float64 f)
